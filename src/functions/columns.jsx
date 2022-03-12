@@ -9,7 +9,7 @@ const columns = () => {
       description: 'Rank by Market Cap Size',
     },
     {
-      field: 'image',
+      field: 'imageUrl',
       headerName: 'Logo',
       renderCell: (params) => (
         <>
