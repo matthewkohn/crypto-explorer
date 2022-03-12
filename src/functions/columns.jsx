@@ -47,7 +47,7 @@ const columns = () => {
       ),
     },
     {
-      field: 'change',
+      field: 'changePercent',
       headerName: '24hr Change',
       sortable: true,
       type: 'number',
