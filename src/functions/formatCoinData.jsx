@@ -1,4 +1,7 @@
 
+const formatPrice = (price) => {
+  return price.toLocaleString(undefined, { style: "currency", currency: "USD" })
+}
 
 const formatCoinData = (coins) => {
   return coins.map((coin) => {
@@ -16,10 +19,6 @@ const formatCoinData = (coins) => {
       sparkline: coin.sparkline_in_7d.price
     }
   })
-}
-
-const formatPrice = (price) => {
-  return price.toLocaleString(undefined, { style: "currency", currency: "USD" })
 }
 
 export { formatCoinData }
