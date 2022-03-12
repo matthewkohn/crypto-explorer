@@ -10,8 +10,7 @@ const App = () => {
   const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
 
-  console.log(`coins object: ${coins.map(coin => console.log(coin))}`)
-  console.log(`isLoaded? ${isLoaded}`)
+  
 
   useEffect(() => {
     fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=true')
@@ -39,7 +38,7 @@ const App = () => {
           <Route 
             path="/coins" 
             element={
-              <CoinList />
+              <CoinList coins={coins} isLoaded={isLoaded} />
             } 
           />
           <Route 
