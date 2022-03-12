@@ -1,8 +1,11 @@
 import React from 'react'
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid'
 import { columns } from '../functions/columns'
+import { useNavigate } from 'react-router-dom'
 
 const CoinList = ({ coins, isLoaded }) => {
+
+  let navigate = useNavigate()
 
   return (
     <div style={{ height: '75vh', width: '100%' }}>
@@ -11,6 +14,7 @@ const CoinList = ({ coins, isLoaded }) => {
           rows={coins}
           columns={columns()}
           hideFooter
+          onRowClick={(params) => navigate(`/coins/${params.id}`)}
         />
         :
         <h2>Loading Cryptocurrencies...</h2>
