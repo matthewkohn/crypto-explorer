@@ -9,7 +9,7 @@ const chartStyles = {
   padding: 2
 }
 
-export default function columns() {
+const columns = () => {
   return [
     { field: 'rank', 
       headerName: 'Rank', 
@@ -56,7 +56,7 @@ export default function columns() {
       ),
     },
     {
-      field: 'change',
+      field: 'percentChange',
       headerName: '24hr Change',
       sortable: true,
       type: 'number',
@@ -80,3 +80,5 @@ export default function columns() {
     },
   ];
 }
+
+export { columns }
