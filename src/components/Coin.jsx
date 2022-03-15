@@ -1,6 +1,12 @@
 import React from 'react'
+// import { useParams } from 'react-router-dom'
 
-const Coin = () => {
+const Coin = ({ coins }) => {
+  // const param = useParams()
+
+  // const coin = coins.filter((item) => item.id === param.id)[0]
+  console.log(coins);
+
   return (
     <div>Coin!</div>
   )

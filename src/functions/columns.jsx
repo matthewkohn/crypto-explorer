@@ -9,7 +9,7 @@ const chartStyles = {
   padding: 2
 }
 
-const columns = () => {
+export default function columns() {
   return [
     { field: 'rank', 
       headerName: 'Rank', 
@@ -18,7 +18,7 @@ const columns = () => {
       description: 'Rank by Market Cap Size',
     },
     {
-      field: 'imageUrl',
+      field: 'image',
       headerName: 'Logo',
       renderCell: (params) => (
         <>
@@ -56,7 +56,7 @@ const columns = () => {
       ),
     },
     {
-      field: 'changePercent',
+      field: 'change',
       headerName: '24hr Change',
       sortable: true,
       type: 'number',
@@ -80,5 +80,3 @@ const columns = () => {
     },
   ];
 }
-
-export { columns }

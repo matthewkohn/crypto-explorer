@@ -1,23 +1,24 @@
 import React from 'react'
-import { DataGrid } from '@mui/x-data-grid'
-import { columns } from '../functions/columns'
-import { useNavigate } from 'react-router-dom'
+import { DataGrid } from '@mui/x-data-grid';
+import { useNavigate } from 'react-router-dom';
+import columns from '../functions/columns';
+import formatCoins from '../functions/formatCoinData';
 
 const CoinList = ({ coins, isLoaded }) => {
-
-  let navigate = useNavigate()
+// console.log(rows(coins))
+  let navigate = useNavigate();
 
   return (
     <div style={{ height: '75vh', width: '100%' }}>
       {isLoaded ? 
         <DataGrid
-          rows={coins}
+          rows={formatCoins(coins)}
           columns={columns()}
           hideFooter
           onRowClick={(params) => navigate(`/coins/${params.id}`)}
         />
         :
-        <h2>Loading Cryptocurrencies...</h2>
+        <h2>Loading...</h2>
       }
     </div>
   )
