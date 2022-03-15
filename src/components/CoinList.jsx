@@ -5,7 +5,7 @@ import columns from '../functions/columns';
 import formatCoins from '../functions/formatCoinData';
 
 const CoinList = ({ coins, isLoaded }) => {
-// console.log(rows(coins))
+console.log(formatCoins(coins))
   let navigate = useNavigate();
 
   return (
