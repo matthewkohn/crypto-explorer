@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Sparklines, SparklinesLine } from "react-sparklines";
+import { Sparklines, SparklinesLine } from "react-sparklines"
 
 function Coin({ formattedCoins }) {
   const param = useParams()
@@ -13,6 +13,18 @@ function Coin({ formattedCoins }) {
     width: "300px", 
     borderRadius: 5, 
     padding: 2
+  }
+
+  function addCoin() {
+    fetch('http://localhost:4000/coins', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, image })
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
   }
 
   return (
@@ -35,7 +47,7 @@ function Coin({ formattedCoins }) {
         <li>24-hour Low: {low24h}</li>
         <li>24-hour Change: {percentChange}</li>
       </ul>
-      
+      <button onClick={addCoin} >Add to Portfolio</button>
     </div>
   )
 }

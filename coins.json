@@ -1,0 +1,29 @@
+{
+  "coins": [
+    {
+      "name": "Cardano",
+      "imageUrl": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
+      "id": 6
+    },
+    {
+      "name": "Tether",
+      "imageUrl": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
+      "id": 7
+    },
+    {
+      "name": "Solana",
+      "imageUrl": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
+      "id": 8
+    },
+    {
+      "name": "Ethereum",
+      "imageUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+      "id": 10
+    },
+    {
+      "name": "Ethereum",
+      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+      "id": 11
+    }
+  ]
+}
