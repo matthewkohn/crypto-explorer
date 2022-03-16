@@ -1,19 +1,9 @@
-import React from 'react'
-// import { Sparklines, SparklinesLine } from "react-sparklines";
-
-// const chartStyles = {
-//   background: "#00bdcc", 
-//   height: "80%", 
-//   width: "100%", 
-//   borderRadius: 5, 
-//   padding: 2
-// }
-
-const columns = () => {
+function columns() {
   return [
-    { field: 'rank', 
-      headerName: 'Rank', 
-      width: 80, 
+    {
+      field: 'rank',
+      headerName: 'Rank',
+      width: 80,
       sortable: true,
       description: 'Rank by Market Cap Size',
     },
@@ -25,8 +15,7 @@ const columns = () => {
           <img
             src={params.formattedValue}
             alt={params.id}
-            style={{width: 40}}
-            />
+            style={{ width: 40 }} />
         </>
       ),
       width: 80,
@@ -62,22 +51,6 @@ const columns = () => {
       type: 'number',
       width: 120,
     },
-    // {
-    //   field: 'sparkline',
-    //   headerName: 'Past 7 days',
-    //   headerAlign: 'center',
-    //   renderCell: (params) => (
-    //     <>
-    //       {/* {console.log(params)} */}
-    //       <Sparklines data={params.value} style={chartStyles} margin={1}  >
-    //         <SparklinesLine style={{ stroke: "white", fill: "none" }} />
-    //       </Sparklines>
-    //     </>
-    //   ),
-    //   sortable: false,
-    //   // type: 'number',
-    //   width: 280,
-    // },
   ];
 }
 

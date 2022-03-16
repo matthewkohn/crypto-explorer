@@ -1,7 +1,7 @@
 import React from 'react'
 import LikedCoin from './LikedCoin'
 
-const Portfolio = () => {
+function Portfolio() {
   return (
     <div>
       Portfolio!

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LikedCoin = () => {
+function LikedCoin() {
   return (
     <div>LikedCoin!</div>
   )

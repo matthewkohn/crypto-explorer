@@ -8,7 +8,7 @@ import { Routes, Route } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
 
 
-const App = () => {
+function App() {
   const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [formattedCoins, setFormattedCoins] = useState([])
@@ -18,10 +18,10 @@ const App = () => {
     fetch(apiUrl)
       .then((res) => res.json())
       .then(data => {
-        setCoins(data);
-        setIsLoaded(true);
+        setCoins(data)
+        setIsLoaded(true)
       })
-  }, []);
+  }, [])
 
   useEffect(() => {
     const newCoins = coins.map((coin) => formatCoin(coin))
@@ -36,25 +36,16 @@ const App = () => {
       </header>
       <Navbar />
       <Routes>
-        <Route 
-          path="/" 
-          element={
-            <Portfolio />
-          } 
-        />
-        <Route 
-          path="/coins" 
-          element={
-            <CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />
-          } 
-        />
-        <Route 
-          path="/coins/:id" 
-          element={
-            <Coin formattedCoins={formattedCoins} />
-          } 
-        />
-      </Routes>  
+        <Route
+          path="/"
+          element={<Portfolio />} />
+        <Route
+          path="/coins"
+          element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />
+        <Route
+          path="/coins/:id"
+          element={<Coin formattedCoins={formattedCoins} />} />
+      </Routes>
     </div>
   )
 }

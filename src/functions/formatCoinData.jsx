@@ -1,8 +1,6 @@
-const formatPrice = (price) => {
-  return price.toLocaleString(undefined, { style: "currency", currency: "USD" });
-}
+import { formatPrice } from "./formatPrice";
 
-const formatCoin = (coin) => {
+function formatCoin(coin) {
   return {
     id: coin.id,
     rank: coin.market_cap_rank,
@@ -15,7 +13,7 @@ const formatCoin = (coin) => {
     high: formatPrice(coin.high_24h),
     low: formatPrice(coin.low_24h),
     marketCap: `$${(coin.market_cap / 1000000).toFixed(3)} million`
-  }
+  };
 }
 
 export { formatCoin }
