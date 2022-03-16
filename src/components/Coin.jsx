@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from "react-sparklines"
 
-function Coin({ formattedCoins }) {
+function Coin({ formattedCoins, onAddCoin }) {
   const param = useParams()
   const navigate = useNavigate()
 
@@ -17,7 +17,7 @@ function Coin({ formattedCoins }) {
     padding: 2
   }
 
-  function addCoin() {
+  function handleAddCoin() {
     fetch('http://localhost:4000/coins', {
       method: 'POST',
       headers: {
@@ -26,7 +26,7 @@ function Coin({ formattedCoins }) {
       body: JSON.stringify({ name, image })
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => onAddCoin(data))
 
     navigate('/')
   }
@@ -51,7 +51,7 @@ function Coin({ formattedCoins }) {
         <li>24-hour Low: {low24h}</li>
         <li>24-hour Change: {percentChange}</li>
       </ul>
-      <button onClick={addCoin} >Add to Portfolio</button>
+      <button onClick={handleAddCoin} >Add to Portfolio</button>
       <button onClick={() => navigate('/coins')} >Display Crypto List</button>
     </div>
   )

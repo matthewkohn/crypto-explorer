@@ -12,7 +12,7 @@ function App() {
   const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [formattedCoins, setFormattedCoins] = useState([])
-
+  const [likedCoins, setLikedCoins] = useState([])
 
   useEffect(() => {
     const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=true'
@@ -30,6 +30,17 @@ function App() {
     setFormattedCoins(newCoins)
   }, [coins])
 
+  useEffect(() => {
+    fetch('http://localhost:4000/coins')
+      .then((res) => res.json())
+      .then((savedCoins) => setLikedCoins(savedCoins))
+      .catch(console.log)
+  }, [])
+
+  const addCoin = (newCoin) => {
+    const updatedCoins = [...likedCoins, newCoin]
+    setLikedCoins(updatedCoins)
+  }
 
   return (
     <div>
@@ -40,13 +51,13 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Portfolio />} />
+          element={<Portfolio likedCoins={likedCoins} />} />
         <Route
           path="/coins"
           element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />
         <Route
           path="/coins/:id"
-          element={<Coin formattedCoins={formattedCoins} />} />
+          element={<Coin formattedCoins={formattedCoins} onAddCoin={addCoin} />} />
         <Route
           path="*"
           element={

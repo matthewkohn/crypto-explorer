@@ -1,8 +1,12 @@
 import React from 'react'
 
-function LikedCoin() {
+function LikedCoin({ coin }) {
+
   return (
-    <div>LikedCoin!</div>
+    <div>
+      <h3>{coin.name}</h3>
+      <img src={coin.image} alt={coin.name} />
+    </div>
   )
 }
 

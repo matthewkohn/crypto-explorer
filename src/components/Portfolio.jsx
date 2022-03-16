@@ -1,26 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import LikedCoin from './LikedCoin'
 
-function Portfolio() {
-  const [likedCoins, setLikedCoins] = useState([])
-
-
-  useEffect(() => {
-    fetch('http://localhost:4000/coins')
-      .then((res) => res.json())
-      .then((savedCoins) => setLikedCoins(savedCoins))
-      .catch(console.log)
-  }, [])
+function Portfolio({ likedCoins }) {
   
-  console.log(likedCoins)
-
+  const likedCoinList = likedCoins.map((coin) => <LikedCoin key={coin.id} coin={coin} /> )
 
   return (
     <div>
-      Portfolio!
-      <LikedCoin />
-      <LikedCoin />
-      <LikedCoin />
+      <h2>Your Portfolio</h2>
+      {likedCoinList}
     </div>
   )
 }

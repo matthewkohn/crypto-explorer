@@ -1,39 +1,29 @@
 {
   "coins": [
     {
-      "name": "Cardano",
-      "imageUrl": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
+      "name": "USD Coin",
+      "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
       "id": 1
-    },
-    {
-      "name": "Tether",
-      "imageUrl": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
-      "id": 2
-    },
-    {
-      "name": "Solana",
-      "imageUrl": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
-      "id": 3
-    },
-    {
-      "name": "Ethereum",
-      "imageUrl": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-      "id": 4
     },
     {
       "name": "Ethereum",
       "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-      "id": 5
+      "id": 2
     },
     {
       "name": "Tether",
       "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
-      "id": 6
+      "id": 3
     },
     {
-      "name": "USD Coin",
-      "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
-      "id": 7
+      "name": "Solana",
+      "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
+      "id": 4
+    },
+    {
+      "name": "Binance USD",
+      "image": "https://assets.coingecko.com/coins/images/9576/large/BUSD.png?1568947766",
+      "id": 5
     }
   ]
 }
