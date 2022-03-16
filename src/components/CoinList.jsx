@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import { useNavigate } from 'react-router-dom'
 import { columns } from '../functions/columns'
-// import formatCoins from '../functions/formatCoinData'
 import { formatCoin } from '../functions/formatCoinData'
 
 const CoinList = ({ coins, isLoaded }) => {

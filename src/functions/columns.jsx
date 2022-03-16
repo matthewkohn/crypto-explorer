@@ -41,9 +41,9 @@ const columns = () => {
       field: 'name',
       headerName: 'Name',
       width: 210,
-      renderCell: (params) => (
-        <h3>{params.formattedValue}</h3>
-      ),
+      // renderCell: (params) => (
+      //   <h3>{params.formattedValue}</h3>
+      // ),
     },
     {
       field: 'price',
@@ -51,9 +51,9 @@ const columns = () => {
       sortable: true,
       // type: 'number',
       width: 120,
-      renderCell: (params) => (
-        <h3>{params.formattedValue}</h3>
-      ),
+      // renderCell: (params) => (
+      //   <h3>{params.formattedValue}</h3>
+      // ),
     },
     {
       field: 'percentChange',
