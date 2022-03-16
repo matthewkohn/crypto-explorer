@@ -41,7 +41,7 @@ function Coin({ formattedCoins }) {
           <h3>{price}</h3>
           <Sparklines data={sparkline} style={chartStyles} margin={1} >
             <SparklinesLine style={{ stroke: "white", fill: "none" }} />
-         </Sparklines>
+          </Sparklines>
         </div>
       </div>
       <ul style={{ textAlign: 'center', listStyle: 'none', lineHeight: 1.7}}>
