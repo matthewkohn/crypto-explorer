@@ -21,6 +21,7 @@ function App() {
         setCoins(data)
         setIsLoaded(true)
       })
+      .catch(err => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
   }, [])
 
   useEffect(() => {
