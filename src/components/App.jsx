@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
 
 
@@ -45,6 +45,14 @@ function App() {
         <Route
           path="/coins/:id"
           element={<Coin formattedCoins={formattedCoins} />} />
+        <Route
+          path="*"
+          element={
+            <>
+              <p>404 This page isn't here anymore.</p>
+              <Link to="/">Go back to Portfolio.</Link>
+            </>
+          } />
       </Routes>
     </div>
   )
