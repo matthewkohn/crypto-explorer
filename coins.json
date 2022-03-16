@@ -24,6 +24,11 @@
       "name": "Ethereum",
       "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
       "id": 11
+    },
+    {
+      "name": "Tether",
+      "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
+      "id": 12
     }
   ]
 }

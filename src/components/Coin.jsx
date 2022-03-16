@@ -1,9 +1,11 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from "react-sparklines"
 
 function Coin({ formattedCoins }) {
   const param = useParams()
+  const navigate = useNavigate()
+  
   const currentCoin = formattedCoins.filter((item) => item.id === param.id)[0]
   const { rank, image, symbol, name, price, percentChange, sparkline, high24h, low24h, marketCap } = currentCoin;
   
@@ -25,6 +27,8 @@ function Coin({ formattedCoins }) {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+
+    navigate('/')
   }
 
   return (
