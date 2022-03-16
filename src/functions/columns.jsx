@@ -1,13 +1,13 @@
 import React from 'react'
-import { Sparklines, SparklinesLine } from "react-sparklines";
+// import { Sparklines, SparklinesLine } from "react-sparklines";
 
-const chartStyles = {
-  background: "#00bdcc", 
-  height: "80%", 
-  width: "100%", 
-  borderRadius: 5, 
-  padding: 2
-}
+// const chartStyles = {
+//   background: "#00bdcc", 
+//   height: "80%", 
+//   width: "100%", 
+//   borderRadius: 5, 
+//   padding: 2
+// }
 
 const columns = () => {
   return [
@@ -62,22 +62,22 @@ const columns = () => {
       type: 'number',
       width: 120,
     },
-    {
-      field: 'sparkline',
-      headerName: 'Past 7 days',
-      headerAlign: 'center',
-      renderCell: (params) => (
-        <>
-          {/* {console.log(params)} */}
-          <Sparklines data={params.value} style={chartStyles} margin={1}  >
-            <SparklinesLine style={{ stroke: "white", fill: "none" }} />
-          </Sparklines>
-        </>
-      ),
-      sortable: false,
-      // type: 'number',
-      width: 280,
-    },
+    // {
+    //   field: 'sparkline',
+    //   headerName: 'Past 7 days',
+    //   headerAlign: 'center',
+    //   renderCell: (params) => (
+    //     <>
+    //       {/* {console.log(params)} */}
+    //       <Sparklines data={params.value} style={chartStyles} margin={1}  >
+    //         <SparklinesLine style={{ stroke: "white", fill: "none" }} />
+    //       </Sparklines>
+    //     </>
+    //   ),
+    //   sortable: false,
+    //   // type: 'number',
+    //   width: 280,
+    // },
   ];
 }
 

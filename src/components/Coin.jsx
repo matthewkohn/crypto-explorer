@@ -16,3 +16,19 @@ const Coin = ({ formattedCoins }) => {
 }
 
 export default Coin
+
+
+
+
+// import { Sparklines, SparklinesLine } from "react-sparklines";
+
+// const chartStyles = {
+//   background: "#00bdcc", 
+//   height: "80%", 
+//   width: "100%", 
+//   borderRadius: 5, 
+//   padding: 2
+// }
+{/* <Sparklines data={params.value} style={chartStyles} margin={1}  >
+    //         <SparklinesLine style={{ stroke: "white", fill: "none" }} />
+    //       </Sparklines> */}

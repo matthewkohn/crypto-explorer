@@ -5,30 +5,16 @@ import { columns } from '../functions/columns'
 // import { formatCoin } from '../functions/formatCoinData'
 
 const CoinList = ({ formattedCoins, isLoaded }) => {
-  // const [formattedRows, setFormattedRows] = useState([])
-  const [loadedColumns, setLoadedColumns] = useState([])
-
-  useEffect(() => {
-    // const rows = coins.map((coin) => formatCoin(coin))
-    // setFormattedRows(rows)
-
-    const cols = columns()
-    console.log(cols)
-    setLoadedColumns(cols)
-  }, [])
+  const gridColumns = columns();
 
   let navigate = useNavigate();
 
   const dataGridJsx = <DataGrid
                       rows={formattedCoins}
-                      columns={loadedColumns}
+                      columns={gridColumns}
                       hideFooter
                       onRowClick={(params) => navigate(`/coins/${params.id}`)}
                     />
-
-  // const formattedRows = coins.map((coin) => formatCoin(coin))
-  // const loadedColumns = columns();
-  // console.log(formattedRows)
 
   return (
     <div style={{ height: '75vh', width: '100%' }}>
