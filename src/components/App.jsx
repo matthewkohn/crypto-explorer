@@ -51,7 +51,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Portfolio likedCoins={likedCoins} />} />
+          element={<Portfolio likedCoins={likedCoins} updateCoins={setLikedCoins} />} />
         <Route
           path="/coins"
           element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />

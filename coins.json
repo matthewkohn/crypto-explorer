@@ -6,11 +6,6 @@
       "id": 1
     },
     {
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-      "id": 2
-    },
-    {
       "name": "Tether",
       "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
       "id": 3
@@ -21,9 +16,9 @@
       "id": 4
     },
     {
-      "name": "Binance USD",
-      "image": "https://assets.coingecko.com/coins/images/9576/large/BUSD.png?1568947766",
-      "id": 5
+      "name": "Dogecoin",
+      "image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
+      "id": 6
     }
   ]
 }

@@ -1,9 +1,14 @@
 import React from 'react'
 import LikedCoin from './LikedCoin'
 
-function Portfolio({ likedCoins }) {
+function Portfolio({ likedCoins, updateCoins }) {
   
-  const likedCoinList = likedCoins.map((coin) => <LikedCoin key={coin.id} coin={coin} /> )
+  const deleteCoin = (id) => {
+    const newCoins = likedCoins.filter((coin) => coin.id !== id)
+    updateCoins(newCoins)
+  }
+
+  const likedCoinList = likedCoins.map((coin) => <LikedCoin key={coin.id} coin={coin} onDelete={deleteCoin} /> )
 
   return (
     <div>
