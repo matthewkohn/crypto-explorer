@@ -49,7 +49,7 @@ const columns = () => {
       field: 'price',
       headerName: 'Current Value',
       sortable: true,
-      type: 'number',
+      // type: 'number',
       width: 120,
       renderCell: (params) => (
         <h3>{params.formattedValue}</h3>
@@ -59,7 +59,7 @@ const columns = () => {
       field: 'percentChange',
       headerName: '24hr Change',
       sortable: true,
-      type: 'number',
+      // type: 'number',
       width: 120,
     },
     {
@@ -75,7 +75,7 @@ const columns = () => {
         </>
       ),
       sortable: false,
-      type: 'number',
+      // type: 'number',
       width: 280,
     },
   ];
