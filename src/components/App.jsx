@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
 
 
@@ -30,34 +30,32 @@ const App = () => {
 
 
   return (
-    <Router>
-      <div>
-        <header>
-          <h1>CRYPTO EXPLORER</h1>
-        </header>
-        <Navbar />
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <Portfolio />
-            } 
-          />
-          <Route 
-            path="/coins" 
-            element={
-              <CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />
-            } 
-          />
-          <Route 
-            path="/coins/:id" 
-            element={
-              <Coin formattedCoins={formattedCoins} />
-            } 
-          />
-        </Routes>  
-      </div>
-    </Router>
+    <div>
+      <header>
+        <h1>CRYPTO EXPLORER</h1>
+      </header>
+      <Navbar />
+      <Routes>
+        <Route 
+          path="/" 
+          element={
+            <Portfolio />
+          } 
+        />
+        <Route 
+          path="/coins" 
+          element={
+            <CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />
+          } 
+        />
+        <Route 
+          path="/coins/:id" 
+          element={
+            <Coin formattedCoins={formattedCoins} />
+          } 
+        />
+      </Routes>  
+    </div>
   )
 }
 
