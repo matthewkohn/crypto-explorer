@@ -1,16 +1,17 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { formatCoin } from '../functions/formatCoinData'
 
-const Coin = ({ coins }) => {
+const Coin = ({ formattedCoins }) => {
   const param = useParams()
   console.log(param)
 
-  const coin = coins.filter((item) => item.id === param.id)[0]
-  console.log(formatCoin(coin));
+  const coin = formattedCoins.filter((item) => item.id === param.id)[0]
 
   return (
-    <div>Coin!</div>
+    <div>
+      <p>Coin!</p>
+      {console.log(coin)}
+    </div>
   )
 }
 

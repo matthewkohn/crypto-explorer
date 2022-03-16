@@ -5,13 +5,13 @@ import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { formatCoin } from "../functions/formatCoinData"
 
 
 const App = () => {
   const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
-
-  
+  const [formattedCoins, setFormattedCoins] = useState([])
 
   useEffect(() => {
     const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=true'
@@ -22,6 +22,12 @@ const App = () => {
         setIsLoaded(true);
       })
   }, []);
+
+  useEffect(() => {
+    const newCoins = coins.map((coin) => formatCoin(coin))
+    setFormattedCoins(newCoins)
+  }, [coins])
+
 
   return (
     <Router>
@@ -40,13 +46,13 @@ const App = () => {
           <Route 
             path="/coins" 
             element={
-              <CoinList coins={coins} isLoaded={isLoaded} />
+              <CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />
             } 
           />
           <Route 
             path="/coins/:id" 
             element={
-              <Coin coins={coins} />
+              <Coin formattedCoins={formattedCoins} />
             } 
           />
         </Routes>  
