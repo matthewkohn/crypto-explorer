@@ -56,7 +56,7 @@ function App() {
           path="/coins"
           element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />
         <Route
-          path="/coins/:id"
+          path={isLoaded ? "/coins/:id" : "/"}
           element={<Coin formattedCoins={formattedCoins} onAddCoin={addCoin} />} />
         <Route
           path="*"

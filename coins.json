@@ -1,11 +1,6 @@
 {
   "coins": [
     {
-      "name": "USD Coin",
-      "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
-      "id": 1
-    },
-    {
       "name": "Tether",
       "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
       "id": 3
@@ -19,6 +14,16 @@
       "name": "Dogecoin",
       "image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
       "id": 6
+    },
+    {
+      "name": "Ethereum",
+      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+      "id": 7
+    },
+    {
+      "name": "Cardano",
+      "image": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
+      "id": 8
     }
   ]
 }
