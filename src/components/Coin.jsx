@@ -51,6 +51,13 @@ function Coin({ formattedCoins, onAddCoin }) {
         <li>24-hour Low: {low24h}</li>
         <li>24-hour Change: {percentChange}</li>
       </ul>
+      <form>
+        <label for="buy" >Buy
+          <input type="number" max="100" min="0" name="buy"/>
+            
+        </label>
+      </form>
+
       <button onClick={handleAddCoin} >Add to Portfolio</button>
       <button onClick={() => navigate('/coins')} >Display Crypto List</button>
     </div>

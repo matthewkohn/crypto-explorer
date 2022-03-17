@@ -1,12 +1,14 @@
 import React from 'react'
+import { Card, Avatar, CardHeader, IconButton } from '@mui/material';
+import { DeleteOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom'
 
 function LikedCoin({ coin, onDelete }) {
 
   const navigate = useNavigate();
 
-  const handleDelete = () => {
-    fetch(`http://localhost:4000/coins/${coin.id}`, {
+  const handleDelete = (id) => {
+    fetch("http://localhost:4000/coins/" + id, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -16,9 +18,18 @@ function LikedCoin({ coin, onDelete }) {
   console.log(coin)
   return (
     <div onClick={() => navigate(`/coins/${coin.param}`)} >
-      <h3>{coin.name}</h3>
-      <img src={coin.image} alt={coin.name} />
-      <button onClick={handleDelete} >Delete</button>
+      <Card  >
+        <CardHeader
+          avatar={ <Avatar src={coin.image} alt={coin.name}/> }
+          action={
+            <IconButton onClick={() => handleDelete(coin.id)}>
+              <DeleteOutlined />  
+            </IconButton>
+          }
+          title={coin.name}
+          />
+        
+      </Card>
     </div>
   )
 }
