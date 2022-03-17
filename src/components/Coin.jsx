@@ -7,7 +7,7 @@ function Coin({ formattedCoins, onAddCoin }) {
   const navigate = useNavigate()
 
   const currentCoin = formattedCoins.filter((item) => item.id === param.id)[0]
-  const { rank, image, symbol, name, price, percentChange, sparkline, high24h, low24h, marketCap } = currentCoin;
+  const { id, rank, image, symbol, name, price, percentChange, sparkline, high24h, low24h, marketCap } = currentCoin;
   
   const chartStyles = {
     background: "#00bdcc", 
@@ -23,7 +23,7 @@ function Coin({ formattedCoins, onAddCoin }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, image })
+      body: JSON.stringify({ name, image, param: id })
     })
       .then((res) => res.json())
       .then((data) => onAddCoin(data))
