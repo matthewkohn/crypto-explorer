@@ -1,3 +1,4 @@
+import { Container, Grid } from '@mui/material'
 import React from 'react'
 import LikedCoin from './LikedCoin'
 
@@ -8,13 +9,17 @@ function Portfolio({ likedCoins, updateCoins }) {
     updateCoins(newCoins)
   }
 
-  const likedCoinList = likedCoins.map((coin) => <LikedCoin key={coin.id} coin={coin} onDelete={deleteCoin} /> )
+  const likedCoinList = likedCoins.map((coin) => (
+    <LikedCoin key={coin.id} coin={coin} onDelete={deleteCoin} /> )
+  )
 
   return (
-    <div>
+    <Container>
       <h2>Your Portfolio</h2>
-      {likedCoinList}
-    </div>
+      <Grid container spacing={3}>
+        {likedCoinList}
+      </Grid>
+    </Container>
   )
 }
 

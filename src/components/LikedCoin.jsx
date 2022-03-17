@@ -1,4 +1,5 @@
 import React from 'react'
+import { Grid } from '@mui/material';
 import { Card, Avatar, CardHeader, IconButton } from '@mui/material';
 import { DeleteOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom'
@@ -18,18 +19,20 @@ function LikedCoin({ coin, onDelete }) {
   console.log(coin)
   return (
     <div onClick={() => navigate(`/coins/${coin.param}`)} >
-      <Card  >
-        <CardHeader
-          avatar={ <Avatar src={coin.image} alt={coin.name}/> }
-          action={
-            <IconButton onClick={() => handleDelete(coin.id)}>
-              <DeleteOutlined />  
-            </IconButton>
-          }
-          title={coin.name}
-          />
-        
-      </Card>
+      <Grid item xs={12} md={6} lg={4}>  
+        <Card  >
+          <CardHeader
+            avatar={ <Avatar src={coin.image} alt={coin.name}/> }
+            action={
+              <IconButton onClick={() => handleDelete(coin.id)}>
+                <DeleteOutlined />  
+              </IconButton>
+            }
+            title={coin.name}
+            />
+          
+        </Card>
+      </Grid>
     </div>
   )
 }

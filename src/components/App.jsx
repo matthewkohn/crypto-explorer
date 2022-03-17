@@ -1,4 +1,4 @@
-// import './App.css';
+import '../index.css';
 import React, { useEffect, useState } from "react"
 import Navbar from './Navbar'
 import Portfolio from './Portfolio'
@@ -6,9 +6,29 @@ import CoinList from './CoinList'
 import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
+import { Container,  createTheme, ThemeProvider } from '@mui/material'
+import { amber, deepPurple } from '@mui/material/colors'
 
+const theme = createTheme({
+  palette: {
+    primary: deepPurple,
+    secondary: amber,
+  },
+  typography: {
+    fontFamily: "Montserrat"
+  }
+})
+
+
+
+// makeStyles,
+// const useStyles = makeStyles({
+
+// })
 
 function App() {
+  // const classes = useStyles()
+
   const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [formattedCoins, setFormattedCoins] = useState([])
@@ -43,31 +63,33 @@ function App() {
   }
 
   return (
-    <div>
-      <header>
-        <h1>CRYPTO EXPLORER</h1>
-      </header>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={<Portfolio likedCoins={likedCoins} updateCoins={setLikedCoins} />} />
-        <Route
-          path="/coins"
-          element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />
-        <Route
-          path={isLoaded ? "/coins/:id" : "/"}
-          element={<Coin formattedCoins={formattedCoins} onAddCoin={addCoin} />} />
-        <Route
-          path="*"
-          element={
-            <>
-              <p>404 This page isn't here anymore.</p>
-              <Link to="/">Go back to Portfolio.</Link>
-            </>
-          } />
-      </Routes>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <header>
+          <h1>CRYPTO EXPLORER</h1>
+        </header>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={<Portfolio likedCoins={likedCoins} updateCoins={setLikedCoins} />} />
+          <Route
+            path="/coins"
+            element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />
+          <Route
+            path={isLoaded ? "/coins/:id" : "/"}
+            element={<Coin formattedCoins={formattedCoins} onAddCoin={addCoin} />} />
+          <Route
+            path="*"
+            element={
+              <>
+                <p>404 This page isn't here anymore.</p>
+                <Link to="/">Go back to Portfolio.</Link>
+              </>
+            } />
+        </Routes>
+      </Container>
+    </ThemeProvider>
   )
 }
 
