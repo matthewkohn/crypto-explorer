@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material'
+import { Grid, Paper, Typography } from '@mui/material'
 import React from 'react'
 import LikedCoin from './LikedCoin'
 
@@ -14,12 +14,12 @@ function Portfolio({ likedCoins, updateCoins }) {
   )
 
   return (
-    <Container>
-      <h2>Your Portfolio</h2>
-      <Grid container spacing={3}>
+    <Paper sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+      <Typography variant="h5" gutterBottom>Your Portfolio</Typography>
+      <Grid container spacing={3} sx={{justifyContent: 'center'}}>
         {likedCoinList}
       </Grid>
-    </Container>
+    </Paper>
   )
 }
 

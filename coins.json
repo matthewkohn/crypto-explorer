@@ -1,34 +1,34 @@
 {
   "coins": [
     {
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-      "param": "ethereum",
-      "id": 2
+      "name": "Solana",
+      "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
+      "param": "solana",
+      "id": 6
     },
     {
-      "name": "Tether",
-      "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
-      "param": "tether",
-      "id": 3
+      "name": "Polygon",
+      "image": "https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912",
+      "param": "matic-network",
+      "id": 7
     },
     {
-      "name": "USD Coin",
-      "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
-      "param": "usd-coin",
-      "id": 4
+      "name": "XRP",
+      "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
+      "param": "ripple",
+      "id": 8
     },
     {
       "name": "Bitcoin",
       "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
       "param": "bitcoin",
-      "id": 5
+      "id": 9
     },
     {
-      "name": "Solana",
-      "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
-      "param": "solana",
-      "id": 6
+      "name": "Bitcoin",
+      "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+      "param": "bitcoin",
+      "id": 10
     }
   ]
 }

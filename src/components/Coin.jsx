@@ -1,3 +1,4 @@
+import { Paper } from '@mui/material'
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from "react-sparklines"
@@ -32,7 +33,7 @@ function Coin({ formattedCoins, onAddCoin }) {
   }
 
   return (
-    <div>
+    <Paper>
       <div style={{display: 'flex', padding: 40}}>
         <img src={image} alt={name} style={{ width: 180, height: 180, marginRight: 80 }}/>
         <div >
@@ -51,16 +52,10 @@ function Coin({ formattedCoins, onAddCoin }) {
         <li>24-hour Low: {low24h}</li>
         <li>24-hour Change: {percentChange}</li>
       </ul>
-      <form>
-        <label htmlFor="buy" >Buy
-          <input type="number" max="100" min="0" name="buy"/>
-            
-        </label>
-      </form>
 
       <button onClick={handleAddCoin} >Add to Portfolio</button>
       <button onClick={() => navigate('/coins')} >Display Crypto List</button>
-    </div>
+    </Paper>
   )
 }
 
