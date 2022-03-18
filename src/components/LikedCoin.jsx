@@ -19,7 +19,7 @@ function LikedCoin({ coin, onDelete }) {
   console.log(coin)
   return (
     <div onClick={() => navigate(`/coins/${coin.param}`)} >
-      <Grid item xs={12} md={6} lg={4}>  
+      <Grid item xs={12} md={12} lg={12}>  
         <Card  >
           <CardHeader
             avatar={ <Avatar src={coin.image} alt={coin.name}/> }

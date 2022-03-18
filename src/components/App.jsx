@@ -6,24 +6,38 @@ import CoinList from './CoinList'
 import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
-import { Container,  createTheme, ThemeProvider } from '@mui/material'
-import { amber, deepPurple } from '@mui/material/colors'
-
-const theme = createTheme({
-  palette: {
-    primary: deepPurple,
-    secondary: amber,
-  },
-  typography: {
-    fontFamily: "Montserrat"
-  }
-})
+import { Container, Typography } from '@mui/material'
+// import { makeStyles } from '@mui/styles'
+// import { amber, deepPurple } from '@mui/material/colors'
+// import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 
 
+
+// const theme = createTheme({
+//   palette: {
+//     primary: deepPurple,
+//     secondary: amber,
+//   },
+//   typography: {
+//     fontFamily: "Montserrat",
+//     fontWeightLight: 300,
+//     fontWeightRegular: 400,
+//     fontWeightMedium: 700,
+//     fontWeightBold: 900,
+//   },
+// })
+
+// const Box = styled.div`
+//   color: ${props => props.theme.color};
+//   `
 
 // makeStyles,
 // const useStyles = makeStyles({
-
+//   page: {
+//     background: '#f9f9f9',
+//     width: '100%'
+//   }
 // })
 
 function App() {
@@ -63,11 +77,13 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{background: 'fefefe'}}>
+      {/* <Container className={classes.page}> */}
       <Container>
-        <header>
-          <h1>CRYPTO EXPLORER</h1>
-        </header>
+        <Typography variant="h2" gutterBottom>
+          CRYPTO EXPLORER
+        </Typography>
         <Navbar />
         <Routes>
           <Route
@@ -89,6 +105,7 @@ function App() {
             } />
         </Routes>
       </Container>
+      
     </ThemeProvider>
   )
 }

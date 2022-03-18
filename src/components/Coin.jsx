@@ -52,7 +52,7 @@ function Coin({ formattedCoins, onAddCoin }) {
         <li>24-hour Change: {percentChange}</li>
       </ul>
       <form>
-        <label for="buy" >Buy
+        <label htmlFor="buy" >Buy
           <input type="number" max="100" min="0" name="buy"/>
             
         </label>
