@@ -1,15 +1,27 @@
+import React, { useEffect, useState } from 'react'
+// import React, { useEffect } from 'react'
+
 import { Paper } from '@mui/material'
-import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from "react-sparklines"
 
 function Coin({ formattedCoins, onAddCoin }) {
+  const [description, setDescription] = useState('')
   const param = useParams()
   const navigate = useNavigate()
-
   const currentCoin = formattedCoins.filter((item) => item.id === param.id)[0]
-  const { id, rank, image, symbol, name, price, percentChange, sparkline, high24h, low24h, marketCap } = currentCoin;
-  
+  const { id, rank, image, symbol, name, price, percentChange, sparkline, high24h, low24h, marketCap } = currentCoin; 
+
+  useEffect(() => {
+    const URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
+    fetch(URL)
+      .then((res) => res.json())
+      .then((data) => {
+        setDescription(data.description.en)
+      })
+  }, [id])
+
+
   const chartStyles = {
     background: "#00bdcc", 
     height: "80px", 
@@ -24,7 +36,7 @@ function Coin({ formattedCoins, onAddCoin }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, image, param: id })
+      body: JSON.stringify({ name, image, param: id, description })
     })
       .then((res) => res.json())
       .then((data) => onAddCoin(data))
