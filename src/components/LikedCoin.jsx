@@ -8,8 +8,6 @@ function LikedCoin({ coin, handleDelete }) {
 
   const navigate = useNavigate();
 
-
-  
   return (
     <Accordion elevation={5} sx={{ margin: '8px'}}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>

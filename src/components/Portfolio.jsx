@@ -1,4 +1,4 @@
-import { Paper, Typography } from '@mui/material'
+import { Container, Typography } from '@mui/material'
 import React from 'react'
 import LikedCoin from './LikedCoin'
 
@@ -21,10 +21,10 @@ function Portfolio({ likedCoins, updateCoins }) {
   )
 
   return (
-    <Paper sx={{display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center'}}>
+    <Container>
       <Typography variant="h5" gutterBottom>Your Portfolio</Typography>
       {likedCoinList}
-    </Paper>
+    </Container>
   )
 }
 
