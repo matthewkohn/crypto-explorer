@@ -7,42 +7,9 @@ import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
 import { Container, Typography } from '@mui/material'
-// import { makeStyles } from '@mui/styles'
-// import { amber, deepPurple } from '@mui/material/colors'
-// import styled, { ThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components'
 
-
-
-// const theme = createTheme({
-//   palette: {
-//     primary: deepPurple,
-//     secondary: amber,
-//   },
-//   typography: {
-//     fontFamily: "Montserrat",
-//     fontWeightLight: 300,
-//     fontWeightRegular: 400,
-//     fontWeightMedium: 700,
-//     fontWeightBold: 900,
-//   },
-// })
-
-// const Box = styled.div`
-//   color: ${props => props.theme.color};
-//   `
-
-// makeStyles,
-// const useStyles = makeStyles({
-//   page: {
-//     background: '#f9f9f9',
-//     width: '100%'
-//   }
-// })
-
 function App() {
-  // const classes = useStyles()
-
   const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
   const [formattedCoins, setFormattedCoins] = useState([])
@@ -77,9 +44,7 @@ function App() {
   }
 
   return (
-    // <ThemeProvider theme={theme}>
     <ThemeProvider theme={{background: 'fefefe'}}>
-      {/* <Container className={classes.page}> */}
       <Container>
         <Typography variant="h2" gutterBottom>
           CRYPTO EXPLORER
@@ -88,24 +53,39 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Portfolio likedCoins={likedCoins} updateCoins={setLikedCoins} />} />
+            element={
+              <Portfolio 
+                likedCoins={likedCoins} 
+                updateCoins={setLikedCoins} 
+              />
+            } />
           <Route
             path="/coins"
-            element={<CoinList formattedCoins={formattedCoins} isLoaded={isLoaded} />} />
+            element={
+              <CoinList 
+                formattedCoins={formattedCoins} 
+                isLoaded={isLoaded} 
+              />
+            } />
           <Route
             path={isLoaded ? "/coins/:id" : "/"}
-            element={<Coin formattedCoins={formattedCoins} onAddCoin={addCoin} likedCoins={likedCoins} />} />
+            element={
+              <Coin 
+                formattedCoins={formattedCoins} 
+                onAddCoin={addCoin} 
+                likedCoins={likedCoins} 
+              />
+            } />
           <Route
             path="*"
             element={
               <>
-                <p>404 This page isn't here anymore.</p>
-                <Link to="/">Go back to Portfolio.</Link>
+                <Typography variant="h2" sx={{ color: 'red' }}>Page Loading...</Typography>
+                <Link to="/">If this takes to long, go back to Portfolio.</Link>
               </>
             } />
         </Routes>
       </Container>
-      
     </ThemeProvider>
   )
 }
