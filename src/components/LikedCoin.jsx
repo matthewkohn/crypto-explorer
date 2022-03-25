@@ -4,19 +4,11 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DeleteOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom'
 
-function LikedCoin({ coin, onDelete }) {
+function LikedCoin({ coin, handleDelete }) {
 
   const navigate = useNavigate();
 
-  const handleDelete = (id) => {
-    const URL = "http://localhost:4000/coins/"
-    fetch(URL + id, {
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then(onDelete(coin.id))
-      .catch(console.log('There was a slight problem deleting this item.'))
-  }
+
   
   return (
     <Accordion elevation={5} sx={{ margin: '8px'}}>

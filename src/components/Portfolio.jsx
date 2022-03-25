@@ -3,14 +3,21 @@ import React from 'react'
 import LikedCoin from './LikedCoin'
 
 function Portfolio({ likedCoins, updateCoins }) {
-  
-  const deleteCoin = (id) => {
-    const newCoins = likedCoins.filter((coin) => coin.id !== id)
-    updateCoins(newCoins)
+
+  const handleDelete = (id) => {
+    const URL = "http://localhost:4000/coins/"
+    fetch(URL + id, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then(() => {
+        const newCoins = likedCoins.filter((coin) => coin.id !== id)
+        updateCoins(newCoins)
+      })
   }
 
   const likedCoinList = likedCoins.map((coin) => (
-    <LikedCoin key={coin.id} coin={coin} onDelete={deleteCoin} /> )
+    <LikedCoin key={coin.id} coin={coin} handleDelete={handleDelete} /> )
   )
 
   return (
