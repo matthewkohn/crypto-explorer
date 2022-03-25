@@ -1,34 +1,16 @@
 {
   "coins": [
     {
-      "name": "Solana",
-      "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
-      "param": "solana",
-      "id": 6
-    },
-    {
-      "name": "Polygon",
-      "image": "https://assets.coingecko.com/coins/images/4713/large/matic-token-icon.png?1624446912",
-      "param": "matic-network",
-      "id": 7
-    },
-    {
-      "name": "XRP",
-      "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
-      "param": "ripple",
-      "id": 8
-    },
-    {
       "name": "Bitcoin",
       "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
       "param": "bitcoin",
-      "id": 9
+      "id": 1
     },
     {
-      "name": "Bitcoin",
-      "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
-      "param": "bitcoin",
-      "id": 10
+      "name": "Ethereum",
+      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+      "param": "ethereum",
+      "id": 2
     }
   ]
 }

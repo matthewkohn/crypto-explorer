@@ -1,9 +1,7 @@
 import React from 'react'
-import { Grid, Typography } from '@mui/material';
-import { Card, Avatar, CardHeader, IconButton } from '@mui/material';
-// import { DeleteOutlined, InfoIcon } from '@mui/icons-material';
+import { Typography, Accordion, AccordionSummary, AccordionDetails, IconButton, Avatar } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DeleteOutlined } from '@mui/icons-material';
-
 import { useNavigate } from 'react-router-dom'
 
 function LikedCoin({ coin, onDelete }) {
@@ -11,36 +9,40 @@ function LikedCoin({ coin, onDelete }) {
   const navigate = useNavigate();
 
   const handleDelete = (id) => {
-    fetch("http://localhost:4000/coins/" + id, {
+    const URL = "http://localhost:4000/coins/"
+    fetch(URL + id, {
       method: 'DELETE',
     })
       .then((res) => res.json())
       .then(onDelete(coin.id))
+      .catch(console.log('There was a slight problem deleting this item.'))
   }
-
-  console.log(coin)
+  
   return (
-    <div onClick={() => navigate(`/coins/${coin.param}`)} >
-      <Grid item xs={12} md={12} lg={12} >  
-        <Card sx={{ margin: '20px', width: '80vw'}}>
-          <CardHeader
-            avatar={ <Avatar src={coin.image} alt={coin.name}/> }
-            action={
-              // <>
-              //   <IconButton onClick={() => handleDelete(coin.id)}>
-              //     <InfoIcon />  
-              //   </IconButton>
-                <IconButton onClick={() => handleDelete(coin.id)}>
-                  <DeleteOutlined />  
-                </IconButton>
-              // </>
-            }
-            title={<Typography variant="h6">{coin.name}</Typography>}
-            />
-          
-        </Card>
-      </Grid>
-    </div>
+    <Accordion elevation={5} sx={{ margin: '8px'}}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <Avatar 
+          src={coin.image} 
+          alt={coin.name} 
+          onClick={() => navigate(`/coins/${coin.param}`)}
+        />
+        <Typography 
+          sx={{ width: '70%', paddingLeft: '30px' }} 
+          variant="h6" 
+        >
+          {coin.name}
+        </Typography>
+        <IconButton onClick={() => handleDelete(coin.id)} >
+          <DeleteOutlined />  
+        </IconButton>        
+      </AccordionSummary>
+      <AccordionDetails >
+        <Typography>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        </Typography>
+      </AccordionDetails>
+    </Accordion>
   )
 }
 
