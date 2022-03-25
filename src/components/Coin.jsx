@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-// import React, { useEffect } from 'react'
-
 import { Paper } from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from "react-sparklines"
 
-function Coin({ formattedCoins, onAddCoin }) {
+function Coin({ formattedCoins, onAddCoin, likedCoins }) {
   const [description, setDescription] = useState('')
+  const [isLiked, setIsLiked] = useState(false)
   const param = useParams()
   const navigate = useNavigate()
   const currentCoin = formattedCoins.filter((item) => item.id === param.id)[0]
@@ -16,11 +15,11 @@ function Coin({ formattedCoins, onAddCoin }) {
     const URL = `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false`
     fetch(URL)
       .then((res) => res.json())
-      .then((data) => {
-        setDescription(data.description.en)
-      })
-  }, [id])
+      .then((data) => setDescription(data.description.en))
 
+    const found = likedCoins.some(obj => obj.param === id)
+    setIsLiked(found)
+  }, [id])
 
   const chartStyles = {
     background: "#00bdcc", 
@@ -40,7 +39,7 @@ function Coin({ formattedCoins, onAddCoin }) {
     })
       .then((res) => res.json())
       .then((data) => onAddCoin(data))
-
+      
     navigate('/')
   }
 
@@ -65,8 +64,12 @@ function Coin({ formattedCoins, onAddCoin }) {
         <li>24-hour Change: {percentChange}</li>
       </ul>
 
-      <button onClick={handleAddCoin} >Add to Portfolio</button>
-      <button onClick={() => navigate('/coins')} >Display Crypto List</button>
+      <button onClick={handleAddCoin} disabled={isLiked} >
+        {isLiked ? `${name} is awesome` : "Add to Portfolio"}
+      </button>
+      <button onClick={() => navigate('/coins')} >
+        Display Crypto List
+      </button>
     </Paper>
   )
 }
