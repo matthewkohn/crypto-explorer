@@ -3,6 +3,7 @@ import { Typography, Accordion, AccordionSummary, AccordionDetails, IconButton, 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { DeleteOutlined } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom'
+import parse from 'html-react-parser';
 
 function LikedCoin({ coin, handleDelete }) {
 
@@ -27,9 +28,8 @@ function LikedCoin({ coin, handleDelete }) {
         </IconButton>        
       </AccordionSummary>
       <AccordionDetails >
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+        <Typography sx={{ margin: "20px", maxHeight: "150px", overflowY: "scroll"}}>
+          {parse(coin.description)}
         </Typography>
       </AccordionDetails>
     </Accordion>

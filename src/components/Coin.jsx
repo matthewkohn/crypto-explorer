@@ -3,6 +3,14 @@ import { Paper } from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Sparklines, SparklinesLine } from "react-sparklines"
 
+const chartStyles = {
+  background: "#00bdcc", 
+  height: "80px", 
+  width: "300px", 
+  borderRadius: 5, 
+  padding: 2
+}
+
 function Coin({ formattedCoins, onAddCoin, likedCoins }) {
   const [description, setDescription] = useState('')
   const [isLiked, setIsLiked] = useState(false)
@@ -19,15 +27,8 @@ function Coin({ formattedCoins, onAddCoin, likedCoins }) {
 
     const found = likedCoins.some(obj => obj.param === id)
     setIsLiked(found)
-  }, [id])
+  }, [id, likedCoins])
 
-  const chartStyles = {
-    background: "#00bdcc", 
-    height: "80px", 
-    width: "300px", 
-    borderRadius: 5, 
-    padding: 2
-  }
 
   function handleAddCoin() {
     fetch('http://localhost:4000/coins', {
