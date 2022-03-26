@@ -6,7 +6,7 @@ import CoinList from './CoinList'
 import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
-import { Container, Typography } from '@mui/material'
+import { Container, Skeleton, Typography } from '@mui/material'
 // import { ThemeProvider } from 'styled-components'
 
 function App() {
@@ -80,8 +80,11 @@ function App() {
             path="*"
             element={
               <>
-                <Typography variant="h2" sx={{ color: 'red' }}>Page Loading...</Typography>
-                <Link to="/">If this takes to long, go back to Portfolio.</Link>
+                <Skeleton animation="wave" height="50vh" width="50vh" variant="circular">
+                </Skeleton>
+                <Typography variant="h6" sx={{ margin: "10vw"}}>
+                  <Link to="/">Lost connection... Go back.</Link>
+                </Typography>
               </>
             } />
         </Routes>
