@@ -17,10 +17,7 @@ function LikedCoin({ coin, handleDelete }) {
           alt={coin.name} 
           onClick={() => navigate(`/coins/${coin.param}`)}
         />
-        <Typography 
-          sx={{ width: '70%', paddingLeft: '30px' }} 
-          variant="h6" 
-        >
+        <Typography sx={{ width: '70%', paddingLeft: '30px' }} variant="h6" >
           {coin.name}
         </Typography>
         <IconButton onClick={() => handleDelete(coin.id)} >

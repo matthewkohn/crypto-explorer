@@ -7,7 +7,7 @@ import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
 import { Container, Typography } from '@mui/material'
-import { ThemeProvider } from 'styled-components'
+// import { ThemeProvider } from 'styled-components'
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -44,11 +44,11 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={{background: 'fefefe'}}>
+    // <ThemeProvider theme={{background: 'fefefe'}}>
       <Container>
-        <Typography variant="h2" gutterBottom>
+        {/* <Typography variant="h2" gutterBottom>
           CRYPTO EXPLORER
-        </Typography>
+        </Typography> */}
         <Navbar />
         <Routes>
           <Route
@@ -86,7 +86,7 @@ function App() {
             } />
         </Routes>
       </Container>
-    </ThemeProvider>
+    // </ThemeProvider>
   )
 }
 

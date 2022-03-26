@@ -20,9 +20,10 @@ function Portfolio({ likedCoins, updateCoins }) {
     <LikedCoin key={coin.id} coin={coin} handleDelete={handleDelete} /> )
   )
 
+  console.log(likedCoinList)
   return (
     <Container>
-      <Typography variant="h5" gutterBottom>Your Portfolio</Typography>
+      <Typography variant="h6" gutterBottom>Learn more about your favorite cryptocurrencies</Typography>
       {likedCoinList}
     </Container>
   )
