@@ -1,4 +1,4 @@
-import { formatPrice } from "./formatPrice";
+import { formatPrice } from './formatPrice'
 
 function formatCoin(coin) {
   return {

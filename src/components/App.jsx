@@ -1,11 +1,11 @@
-import '../index.css';
-import React, { useEffect, useState } from "react"
+import '../index.css'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
-import { formatCoin } from "../functions/formatCoinData"
+import { formatCoin } from '../util/formatCoinData'
 import { Container, Skeleton, Typography } from '@mui/material'
 
 function App() {
@@ -14,17 +14,15 @@ function App() {
   const [formattedCoins, setFormattedCoins] = useState([])
   const [likedCoins, setLikedCoins] = useState([])
 
-
-  console.log(coins)
   useEffect(() => {
-    const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=false'
-    fetch(apiUrl)
+    const marketsUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=false'
+    fetch(marketsUrl)
       .then((res) => res.json())
-      .then(data => {
+      .then((data) => {
         setCoins(data)
         setIsLoaded(true)
       })
-      .catch(err => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
+      .catch((err) => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
   }, [])
 
   useEffect(() => {
@@ -49,7 +47,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route
-            path="/"
+            path='/'
             element={
               <Portfolio 
                 likedCoins={likedCoins} 
@@ -57,7 +55,7 @@ function App() {
               />
             } />
           <Route
-            path="/coins"
+            path='/coins'
             element={
               <CoinList 
                 formattedCoins={formattedCoins} 
@@ -65,7 +63,7 @@ function App() {
               />
             } />
           <Route
-            path={isLoaded ? "/coins/:id" : "/"}
+            path={isLoaded ? '/coins/:id' : '/'}
             element={
               <Coin 
                 formattedCoins={formattedCoins} 
@@ -74,13 +72,13 @@ function App() {
               />
             } />
           <Route
-            path="*"
+            path='*'
             element={
               <>
-                <Skeleton animation="wave" height="50vh" width="50vh" variant="circular">
+                <Skeleton animation='wave' height='50vh' width='50vh' variant='circular'>
                 </Skeleton>
-                <Typography variant="body2" sx={{ margin: "10vw" }}>
-                  <Link to="/">Lost connection... Go back.</Link>
+                <Typography variant='body2' sx={{ margin: '10vw' }}>
+                  <Link to='/'>Lost connection... Go back.</Link>
                 </Typography>
               </>
             } />

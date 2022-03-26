@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Paper, Grid, IconButton, Typography, Button } from '@mui/material'
-import { StarOutline } from '@mui/icons-material';
+import { Paper, Grid, Typography, Button } from '@mui/material'
+// import { Paper, Grid, IconButton, Typography, Button } from '@mui/material'
+// import { StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -20,8 +21,6 @@ function Coin({ formattedCoins, onAddCoin, likedCoins }) {
   const navigate = useNavigate()
   const currentCoin = formattedCoins.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
-
-  // console.log(currentCoin)
 
   useEffect(() => {
     const URL = `https://api.coingecko.com/api/v3/coins/${id}`
@@ -54,45 +53,50 @@ function Coin({ formattedCoins, onAddCoin, likedCoins }) {
           <Img src={image} alt={name} />
         </Grid>
         <Grid item>
-          <Typography variant="h2">{name}</Typography>
-          <Typography variant="h3">{price}</Typography>
+          <Typography variant='h2'>{name}</Typography>
+          <Typography variant='h3'>{price}</Typography>
         </Grid>
       </Grid>
-      <Grid container spacing={12} sx={{ padding: "40px" }}>
+      <Grid container spacing={12} sx={{ padding: '40px' }}>
+        <Grid item>
+          <Button 
+            variant='outlined' 
+            size='large' 
+            sx={{  padding: '30px', display: 'flex', alignItems: 'center' }}
+            onClick={isLiked ? () => navigate('/') : handleAddCoin}
+          >
+            {isLiked ? 
+              `${name} is awesome. Keep learning.` 
+              : 
+              // <IconButton size='large' color='success' >
+                // <StarOutline />
+                'Add to Portfolio'
+                // <StarOutline />
+              // {/* </IconButton> */}
+              }
+          </Button>
+        </Grid>
         <Grid item>
           
-          <Typography variant="h6" gutterBottom >In the last 24 hours:</Typography>
+          <Typography variant='h6' gutterBottom >
+            In the last 24 hours:
+          </Typography>
           <Typography>High: {high24h}</Typography>
           <Typography>Low: {low24h}</Typography>
-          <Typography gutterBottom sx={ 
-            percentChange > 0 ? {color:'green'} : {color:'red'}
-          }>
+          <Typography 
+            gutterBottom 
+            sx={ percentChange > 0 ? {color:'green'} : {color:'red'} }
+          >
             Change: {percentChange}
           </Typography>
         </Grid>
         <Grid item>
-          <Typography variant="h6" gutterBottom >Fun facts:</Typography>
+          <Typography variant="h6" gutterBottom >
+            Fun facts:
+          </Typography>
           <Typography>Symbol: {symbol}</Typography>
           <Typography>Market Cap Rank: #{rank}</Typography>
           <Typography>Market Cap: {marketCap}</Typography>
-        </Grid>
-        <Grid item>
-          <Button 
-            variant="outlined" 
-            size="large" 
-            sx={{  padding: "30px", display: "flex", alignItems: "center" }}
-            onClick={isLiked ? () => navigate("/") : handleAddCoin}
-          >
-            {isLiked ? 
-              `${name} is awesome. Find out more.` 
-              : 
-              <IconButton size="large" color='success' >
-                <StarOutline />
-                Add to Portfolio
-                <StarOutline />
-              </IconButton>
-              }
-          </Button>
         </Grid>
       </Grid>
     </Paper>

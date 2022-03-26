@@ -1,7 +1,7 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import { useNavigate } from 'react-router-dom'
-import { columns } from '../functions/columns'
+import { columns } from '../util/columns'
 
 function CoinList({ formattedCoins, isLoaded }) {
   const gridColumns = columns()
