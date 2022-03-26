@@ -7,7 +7,6 @@ import Coin from './Coin'
 import { Routes, Route, Link } from 'react-router-dom'
 import { formatCoin } from "../functions/formatCoinData"
 import { Container, Skeleton, Typography } from '@mui/material'
-// import { ThemeProvider } from 'styled-components'
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -18,7 +17,7 @@ function App() {
 
   console.log(coins)
   useEffect(() => {
-    const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=true'
+    const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=false'
     fetch(apiUrl)
       .then((res) => res.json())
       .then(data => {
@@ -46,11 +45,7 @@ function App() {
   }
 
   return (
-    // <ThemeProvider theme={{background: 'fefefe'}}>
       <Container>
-        {/* <Typography variant="h2" gutterBottom>
-          CRYPTO EXPLORER
-        </Typography> */}
         <Navbar />
         <Routes>
           <Route
@@ -84,14 +79,13 @@ function App() {
               <>
                 <Skeleton animation="wave" height="50vh" width="50vh" variant="circular">
                 </Skeleton>
-                <Typography variant="h6" sx={{ margin: "10vw"}}>
+                <Typography variant="body2" sx={{ margin: "10vw" }}>
                   <Link to="/">Lost connection... Go back.</Link>
                 </Typography>
               </>
             } />
         </Routes>
       </Container>
-    // </ThemeProvider>
   )
 }
 
