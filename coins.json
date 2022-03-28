@@ -62,6 +62,13 @@
       "param": "chainlink",
       "description": "Chainlink is a framework for building Decentralized Oracle Networks (DONs) that bring real-world data onto blockchain networks, enabling the creation of hybrid smart contracts. These DONs provide decentralized services such as Price Feeds, Proof of Reserve, Verifiable Randomness, Keepers, and the ability to connect to any web API. \r\n\r\nIt aims to ensure that the external information (pricing, weather data, event outcomes, etc.) and off-chain computations (randomness, transaction automation, fair ordering, etc.) fed to on-chain smart contracts are reliable and tamper-proof.",
       "id": 15
+    },
+    {
+      "name": "Solana",
+      "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
+      "param": "solana",
+      "description": "Solana crypto is a high throughput blockchain based on the Proof of History (PoH) and Proof of Stake (PoS) consensus. Built by a team of networking engineers, Solana aims to become the blockchain infrastucture for modern internet applications.",
+      "id": 16
     }
   ]
 }
