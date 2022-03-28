@@ -1,5 +1,3 @@
-import { formatPrice } from './formatPrice'
-
 function formatCoin(coin) {
   return {
     id: coin.id,
@@ -13,6 +11,10 @@ function formatCoin(coin) {
     low24h: formatPrice(coin.low_24h),
     marketCap: `$${(coin.market_cap / 1000000).toFixed(3)} million`
   };
+}
+
+function formatPrice(price) {
+  return price.toLocaleString(undefined, { style: "currency", currency: "USD" });
 }
 
 export { formatCoin }
