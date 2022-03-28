@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Button, Typography } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import LikedCoin from './LikedCoin'
 import { getDatabaseUrl } from '../util/urls'
@@ -15,8 +16,8 @@ function Portfolio({ likedCoins, updateCoins }) {
     })
       .then((res) => res.json())
       .then(() => {
-        const newCoins = likedCoins.filter((coin) => coin.id !== id)
-        updateCoins(newCoins)
+        const filteredCoins = likedCoins.filter((coin) => coin.id !== id)
+        updateCoins(filteredCoins)
       })
   }
 
@@ -25,21 +26,32 @@ function Portfolio({ likedCoins, updateCoins }) {
     ))
 
   return (
-    <Box sx={{ height: '100vh'}}>
+    <PortfolioBox>
       <Typography variant='h6' gutterBottom>
         Select a cryptocurrency to learn more
       </Typography>
       {likedCoinList}
-      <Button 
+      <CallToAction 
         variant='outlined' 
         size='large' 
-        sx={{ margin: '60px 0', padding: '30px', display: 'flex', alignItems: 'center' }}
         onClick={() => navigate('/coins')}
         >
           Browse most popular cryptos
-      </Button>
-    </Box>
+      </CallToAction>
+    </PortfolioBox>
   )
 }
 
 export default Portfolio
+
+const PortfolioBox = styled(Box)({
+  height: '100vh',
+})
+
+const CallToAction = styled(Button)({
+  margin: '60px 0', 
+  padding: '30px', 
+  display: 'flex', 
+  alignItems: 'center', 
+  width: '100%',
+})
