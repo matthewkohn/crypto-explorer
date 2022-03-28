@@ -4,15 +4,16 @@ import Navbar from './Navbar'
 import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { formatCoin } from '../util/formatCoinData'
-import { Container, Skeleton, Typography } from '@mui/material'
+import { Container, Button, Card } from '@mui/material'
 
 function App() {
-  // const [coins, setCoins] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false)
   const [coinList, setCoinList] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
   const [likedCoins, setLikedCoins] = useState([])
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     const marketsUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=false'
@@ -24,10 +25,9 @@ function App() {
         setIsLoaded(true)
       })
       .catch((err) => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
-  }, [])
-
-  useEffect(() => {
-    fetch('http://localhost:4000/coins')
+    
+    const databaseUrl = 'http://localhost:4000/coins'
+    fetch(databaseUrl)
       .then((res) => res.json())
       .then((savedCoins) => setLikedCoins(savedCoins))
       .catch(console.log)
@@ -70,13 +70,16 @@ function App() {
           <Route
             path='*'
             element={
-              <>
-                <Skeleton animation='wave' height='50vh' width='50vh' variant='circular'>
-                </Skeleton>
-                <Typography variant='body2' sx={{ margin: '10vw' }}>
-                  <Link to='/'>Lost connection... Go back.</Link>
-                </Typography>
-              </>
+              <Card sx={{ margin: '60px 0', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <Button 
+                  color='error'
+                  onClick={() => navigate('/coins')}
+                  size='large'
+                  variant='outlined' 
+                  >
+                    404 Not Found. Try going back?
+                </Button>
+              </Card>
             } />
         </Routes>
       </Container>
