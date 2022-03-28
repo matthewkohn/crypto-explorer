@@ -8,11 +8,13 @@ function CoinList({ coinList, isLoaded }) {
 
   let navigate = useNavigate()
 
-  const dataGridJsx = <DataGrid
-    rows={coinList}
-    columns={gridColumns}
-    hideFooter
-    onRowClick={(params) => navigate(`/coins/${params.id}`)} />
+  const dataGridJsx = 
+    <DataGrid
+      rows={coinList}
+      columns={gridColumns}
+      hideFooter
+      onRowClick={(params) => navigate(`/coins/${params.id}`)} 
+    />
 
   return (
     <div style={{ height: '75vh', width: '100%' }}>

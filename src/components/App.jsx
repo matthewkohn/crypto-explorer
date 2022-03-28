@@ -74,7 +74,6 @@ function App() {
                 <Button 
                   color='error'
                   onClick={() => navigate('/coins')}
-                  size='large'
                   variant='outlined' 
                   >
                     404 Not Found. Try going back?
