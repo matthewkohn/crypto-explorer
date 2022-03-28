@@ -3,13 +3,13 @@ import { DataGrid } from '@mui/x-data-grid'
 import { useNavigate } from 'react-router-dom'
 import { columns } from '../util/columns'
 
-function CoinList({ formattedCoins, isLoaded }) {
+function CoinList({ coinList, isLoaded }) {
   const gridColumns = columns()
 
   let navigate = useNavigate()
 
   const dataGridJsx = <DataGrid
-    rows={formattedCoins}
+    rows={coinList}
     columns={gridColumns}
     hideFooter
     onRowClick={(params) => navigate(`/coins/${params.id}`)} />

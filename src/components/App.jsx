@@ -9,26 +9,22 @@ import { formatCoin } from '../util/formatCoinData'
 import { Container, Skeleton, Typography } from '@mui/material'
 
 function App() {
-  const [coins, setCoins] = useState([])
+  // const [coins, setCoins] = useState([])
   const [isLoaded, setIsLoaded] = useState(false)
-  const [formattedCoins, setFormattedCoins] = useState([])
+  const [coinList, setCoinList] = useState([])
   const [likedCoins, setLikedCoins] = useState([])
 
   useEffect(() => {
     const marketsUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=false'
     fetch(marketsUrl)
       .then((res) => res.json())
-      .then((data) => {
-        setCoins(data)
+      .then((coins) => {
+        const formattedCoins = coins.map((coin) => formatCoin(coin))
+        setCoinList(formattedCoins)
         setIsLoaded(true)
       })
       .catch((err) => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
   }, [])
-
-  useEffect(() => {
-    const newCoins = coins.map((coin) => formatCoin(coin))
-    setFormattedCoins(newCoins)
-  }, [coins])
 
   useEffect(() => {
     fetch('http://localhost:4000/coins')
@@ -58,7 +54,7 @@ function App() {
             path='/coins'
             element={
               <CoinList 
-                formattedCoins={formattedCoins} 
+                coinList={coinList} 
                 isLoaded={isLoaded} 
               />
             } />
@@ -66,7 +62,7 @@ function App() {
             path={isLoaded ? '/coins/:id' : '/'}
             element={
               <Coin 
-                formattedCoins={formattedCoins} 
+                coinList={coinList} 
                 onAddCoin={addCoin} 
                 likedCoins={likedCoins} 
               />

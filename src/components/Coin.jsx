@@ -14,12 +14,12 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-function Coin({ formattedCoins, onAddCoin, likedCoins }) {
+function Coin({ coinList, onAddCoin, likedCoins }) {
   const [description, setDescription] = useState('')
   const [isLiked, setIsLiked] = useState(false)
   const param = useParams()
   const navigate = useNavigate()
-  const currentCoin = formattedCoins.filter((item) => item.id === param.id)[0]
+  const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
 
   useEffect(() => {
