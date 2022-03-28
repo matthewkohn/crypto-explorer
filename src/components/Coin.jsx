@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Paper, Grid, Typography, Button } from '@mui/material'
+import { StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getCoinGeckoUrl, getDatabaseUrl } from '../util/urls';
@@ -54,7 +55,9 @@ function Coin({ coinList, addCoin, likedCoins }) {
         size='large' 
         onClick={isLiked ? () => navigate('/') : handleAddCoin}
       >
+        <StarOutline />
         {isLiked ? `${name} is awesome. Keep learning.` : `Learn more about ${name}`}
+        <StarOutline />
       </CallToAction>
       <GridBlock container spacing={12} >
         <Grid item xs={12} sm={6}>       
@@ -97,7 +100,7 @@ const CallToAction = styled(Button)({
   margin: '10px 0 0', 
   padding: '10px 0', 
   display: 'flex', 
-  alignItems: 'center',
+  justifyContent: 'space-between',
 })
 
 const GridPaper = styled(Paper)({
