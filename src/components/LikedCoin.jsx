@@ -9,25 +9,26 @@ import parse from 'html-react-parser'
 function LikedCoin({ coin, handleDelete }) {
 
   const navigate = useNavigate()
+  const { coinId, description, id, image, name } = coin
 
   return (
     <ChosenCoin elevation={5} >
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <Avatar 
-          src={coin.image} 
-          alt={coin.name} 
-          onClick={() => navigate(`/coins/${coin.param}`)}
+          src={ image } 
+          alt={ name } 
+          onClick={() => navigate(`/coins/${ coinId }`)}
         />
         <CoinName variant='h6' >
-          {coin.name}
+          { name }
         </CoinName>
-        <IconButton onClick={() => handleDelete(coin.id)} >
+        <IconButton onClick={() => handleDelete( id )} >
           <DeleteOutlined />  
         </IconButton>        
       </AccordionSummary>
       <AccordionDetails >
         <Description>
-          {parse(coin.description)}
+          { parse( description ) }
         </Description>
       </AccordionDetails>
     </ChosenCoin>

@@ -15,6 +15,13 @@ function Coin({ coinList, addCoin, likedCoins }) {
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
 
+  const databasePostObj = { 
+    name,
+    image, 
+    coinId: id, 
+    description 
+  }
+
   useEffect(() => {
     const coinGeckoUrl = getCoinGeckoUrl()
     fetch(coinGeckoUrl + `/${id}`)
@@ -22,7 +29,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
       .then((data) => setDescription(data.description.en))
       .catch(console.log)
     // Check for duplication when CTA is clicked
-    const found = likedCoins.some(coin => coin.param === id)
+    const found = likedCoins.some(coin => coin.coinId === id)
     setIsLiked(found)
   }, [id, likedCoins])
 
@@ -33,7 +40,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, image, param: id, description })
+      body: JSON.stringify(databasePostObj)
     })
       .then((res) => res.json())
       .then((data) => addCoin(data))
@@ -52,6 +59,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
           <Typography variant='h3'>{price}</Typography>
         </Grid>
       </GridBlock>
+
       <CallToAction 
         variant='outlined' 
         size='large' 
@@ -61,6 +69,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
         {isLiked ? `${name} is awesome. Keep learning.` : `Learn more about ${name}`}
         <StarOutline />
       </CallToAction>
+
       <GridBlock container spacing={12} >
         <Grid item xs={12} sm={6}>       
           <Typography variant='h6' gutterBottom >
