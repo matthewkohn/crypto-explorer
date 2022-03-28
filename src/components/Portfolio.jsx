@@ -19,11 +19,12 @@ function Portfolio({ likedCoins, updateCoins }) {
         const filteredCoins = likedCoins.filter((coin) => coin.id !== id)
         updateCoins(filteredCoins)
       })
+      .catch(console.log)
   }
 
   const likedCoinList = likedCoins.map((coin) => (
     <LikedCoin key={coin.id} coin={coin} handleDelete={handleDelete} /> 
-    ))
+  ))
 
   return (
     <PortfolioBox>

@@ -20,6 +20,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
     fetch(coinGeckoUrl + `/${id}`)
       .then((res) => res.json())
       .then((data) => setDescription(data.description.en))
+      .catch(console.log)
     // Check for duplication when CTA is clicked
     const found = likedCoins.some(coin => coin.param === id)
     setIsLiked(found)
@@ -37,6 +38,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
       .then((res) => res.json())
       .then((data) => addCoin(data))
       .then(navigate('/'))
+      .catch(console.log)
   }
 
   return (
