@@ -14,7 +14,7 @@ const Img = styled('img')({
   maxHeight: '100%',
 });
 
-function Coin({ coinList, onAddCoin, likedCoins }) {
+function Coin({ coinList, addCoin, likedCoins }) {
   const [description, setDescription] = useState('')
   const [isLiked, setIsLiked] = useState(false)
   const param = useParams()
@@ -41,7 +41,7 @@ function Coin({ coinList, onAddCoin, likedCoins }) {
       body: JSON.stringify({ name, image, param: id, description })
     })
       .then((res) => res.json())
-      .then((data) => onAddCoin(data))
+      .then((data) => addCoin(data))
       
     navigate('/')
   }
@@ -62,18 +62,10 @@ function Coin({ coinList, onAddCoin, likedCoins }) {
           <Button 
             variant='outlined' 
             size='large' 
-            sx={{  padding: '30px', display: 'flex', alignItems: 'center' }}
+            // sx={{  padding: '30px', display: 'flex', alignItems: 'center' }}
             onClick={isLiked ? () => navigate('/') : handleAddCoin}
           >
-            {isLiked ? 
-              `${name} is awesome. Keep learning.` 
-              : 
-              // <IconButton size='large' color='success' >
-                // <StarOutline />
-                'Add to Portfolio'
-                // <StarOutline />
-              // {/* </IconButton> */}
-              }
+            {isLiked ? `${name} is awesome. Keep learning.` : 'Add to Portfolio'}
           </Button>
         </Grid>
         <Grid item>

@@ -2,14 +2,15 @@ import React from 'react'
 import { Box, Button, Typography } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import LikedCoin from './LikedCoin'
+import { getDatabaseUrl } from '../util/urls'
 
 function Portfolio({ likedCoins, updateCoins }) {
 
   const navigate = useNavigate()
 
   const handleDelete = (id) => {
-    const URL = 'http://localhost:4000/coins/'
-    fetch(URL + id, {
+    const databaseUrl = getDatabaseUrl()
+    fetch(databaseUrl + `/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

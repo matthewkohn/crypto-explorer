@@ -7,6 +7,7 @@ import Coin from './Coin'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { formatCoin } from '../util/formatCoinData'
 import { Container, Button, Card } from '@mui/material'
+import { getDatabaseUrl, getMarketsUrl } from '../util/urls'
 
 function App() {
   const [coinList, setCoinList] = useState([])
@@ -16,7 +17,7 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const marketsUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_rank&per_page500&page=1&sparkline=false'
+    const marketsUrl = getMarketsUrl()
     fetch(marketsUrl)
       .then((res) => res.json())
       .then((coins) => {
@@ -26,7 +27,7 @@ function App() {
       })
       .catch((err) => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
     
-    const databaseUrl = 'http://localhost:4000/coins'
+    const databaseUrl = getDatabaseUrl()
     fetch(databaseUrl)
       .then((res) => res.json())
       .then((savedCoins) => setLikedCoins(savedCoins))
@@ -63,7 +64,7 @@ function App() {
             element={
               <Coin 
                 coinList={coinList} 
-                onAddCoin={addCoin} 
+                addCoin={addCoin} 
                 likedCoins={likedCoins} 
               />
             } />
