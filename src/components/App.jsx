@@ -7,6 +7,7 @@ import Coin from './Coin'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { formatCoin } from '../util/formatCoinData'
 import { Container, Button, Card } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { getDatabaseUrl, getMarketsUrl } from '../util/urls'
 
 function App() {
@@ -71,7 +72,7 @@ function App() {
           <Route
             path='*'
             element={
-              <Card sx={{ margin: '60px 0', padding: '30px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <ErrorCard>
                 <Button 
                   color='error'
                   onClick={() => navigate('/coins')}
@@ -79,7 +80,7 @@ function App() {
                   >
                     404 Not Found. Try going back?
                 </Button>
-              </Card>
+              </ErrorCard>
             } />
         </Routes>
       </Container>
@@ -87,3 +88,11 @@ function App() {
 }
 
 export default App
+
+const ErrorCard = styled(Card)({
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'center',
+  margin: '60px 0', 
+  padding: '30px', 
+})
