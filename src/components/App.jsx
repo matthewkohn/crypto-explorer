@@ -1,6 +1,6 @@
 import '../index.css'
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import Header from './Header'
 import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
@@ -41,7 +41,7 @@ function App() {
 
   return (
       <Container>
-        <Navbar />
+        <Header />
         <Routes>
           <Route
             path='/'

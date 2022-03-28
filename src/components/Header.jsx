@@ -1,21 +1,21 @@
 import React from 'react'
 import { FormatListNumbered, StarOutline } from '@mui/icons-material'
 import { Box, IconButton, Toolbar, Typography } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
-function Navbar() {
+function Header() {
   const navigate = useNavigate()
 
   return (
-    <Box sx={{ margin: '30px 0 60px' }}>
+    <HeaderBox>
       <Toolbar>
-        <Typography 
+        <Title 
           variant='h3' 
-          component='div' 
-          sx={{ flexGrow: 1 }} 
+          component='div'  
         >
           Crypto Explorer
-        </Typography>
+        </Title>
         <IconButton
           size='large'
           onClick={() => navigate('/')}
@@ -29,8 +29,16 @@ function Navbar() {
           <FormatListNumbered />
         </IconButton>
       </Toolbar>
-    </Box>
+    </HeaderBox>
   );
 }
 
-export default Navbar
+export default Header
+
+const HeaderBox = styled(Box)({
+  margin: '30px 0 60px',
+})
+
+const Title = styled(Typography)({
+  flexGrow: 1,
+})
