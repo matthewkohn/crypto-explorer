@@ -32,9 +32,9 @@ function Portfolio({ likedCoins, updateCoins }) {
 
   return (
     <PortfolioBox>
-      <Typography variant='h6' gutterBottom>
+      <Instructions variant='h5' gutterBottom >
         Select a cryptocurrency to learn more
-      </Typography>
+      </Instructions>
       {likedCoinList}
       <CallToAction 
         variant='outlined' 
@@ -48,6 +48,10 @@ function Portfolio({ likedCoins, updateCoins }) {
 }
 
 export default Portfolio
+
+const Instructions = styled(Typography)({
+  textAlign: 'center',
+})
 
 const PortfolioBox = styled(Box)({
   height: '100vh',
