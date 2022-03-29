@@ -26,7 +26,7 @@ function App() {
         setCoinList(formattedCoins)
         setIsLoaded(true)
       })
-      .catch((err) => console.log(err, "There was a problem loading data from CoinGecko's API. Please try again later."))
+      .catch(console.log)
     
     const databaseUrl = getDatabaseUrl()
     fetch(databaseUrl)
@@ -48,25 +48,25 @@ function App() {
             path='/'
             element={
               <Portfolio 
-                likedCoins={likedCoins} 
-                updateCoins={setLikedCoins} 
+                likedCoins={ likedCoins } 
+                updateCoins={ setLikedCoins } 
               />
             } />
           <Route
             path='/coins'
             element={
               <CoinList 
-                coinList={coinList} 
-                isLoaded={isLoaded} 
+                coinList={ coinList } 
+                isLoaded={ isLoaded } 
               />
             } />
           <Route
-            path={isLoaded ? '/coins/:id' : '/'}
+            path='/coins/:id'
             element={
               <Coin 
-                coinList={coinList} 
-                addCoin={addCoin} 
-                likedCoins={likedCoins} 
+                addCoin={ addCoin } 
+                coinList={ coinList } 
+                likedCoins={ likedCoins } 
               />
             } />
           <Route

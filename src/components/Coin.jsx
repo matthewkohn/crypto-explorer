@@ -15,32 +15,27 @@ function Coin({ coinList, addCoin, likedCoins }) {
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
 
-  const databasePostObj = { 
-    name,
-    image, 
-    coinId: id, 
-    description 
-  }
-
   useEffect(() => {
     const coinGeckoUrl = getCoinGeckoUrl()
-    fetch(coinGeckoUrl + `/${id}`)
+    const descriptionUrl = coinGeckoUrl + '/' + id
+    fetch(descriptionUrl)
       .then((res) => res.json())
       .then((data) => setDescription(data.description.en))
       .catch(console.log)
     // Check for duplication when CTA is clicked
-    const found = likedCoins.some(coin => coin.coinId === id)
+    const found = likedCoins.some(coin => coin.param === id)
     setIsLiked(found)
   }, [id, likedCoins])
 
   function handleAddCoin() {
+    const jsonObj = { name, image, param: id, description }
     const databaseUrl = getDatabaseUrl()
     fetch(databaseUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(databasePostObj)
+      body: JSON.stringify(jsonObj)
     })
       .then((res) => res.json())
       .then((data) => addCoin(data))
@@ -52,21 +47,25 @@ function Coin({ coinList, addCoin, likedCoins }) {
     <GridPaper elevation={10} >
       <GridBlock container spacing={8} >
         <Grid item xs={6}>
-          <Img src={image} alt={name} />
+          <Img src={ image } alt={ name } />
         </Grid>
         <Grid item xs={6}>
-          <Typography variant='h2'>{name}</Typography>
-          <Typography variant='h3'>{price}</Typography>
+          <Typography variant='h2'>{ name }</Typography>
+          <Typography variant='h3'>{ price }</Typography>
         </Grid>
       </GridBlock>
 
       <CallToAction 
         variant='outlined' 
         size='large' 
-        onClick={isLiked ? () => navigate('/') : handleAddCoin}
+        onClick={ isLiked ? () => navigate('/') : handleAddCoin }
       >
         <StarOutline />
-        {isLiked ? `${name} is awesome. Keep learning.` : `Learn more about ${name}`}
+        { isLiked ? 
+          `${ name } is awesome. Keep learning.` 
+          : 
+          `Learn more about ${ name }` 
+        }
         <StarOutline />
       </CallToAction>
 
@@ -75,22 +74,22 @@ function Coin({ coinList, addCoin, likedCoins }) {
           <Typography variant='h6' gutterBottom >
             In the last 24 hours:
           </Typography>
-          <Typography>High: {high24h}</Typography>
-          <Typography>Low: {low24h}</Typography>
+          <Typography>High: { high24h }</Typography>
+          <Typography>Low: { low24h }</Typography>
           <Typography 
             gutterBottom 
             sx={ percentChange > 0 ? {color:'green'} : {color:'red'} }
           >
-            Change: {percentChange}
+            Change: { percentChange }
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Typography variant='h6' gutterBottom >
             Fun facts:
           </Typography>
-          <Typography>Symbol: {symbol}</Typography>
-          <Typography>Market Cap Rank: #{rank}</Typography>
-          <Typography>Market Cap: {marketCap}</Typography>
+          <Typography>Symbol: { symbol }</Typography>
+          <Typography>Market Cap Rank: #{ rank }</Typography>
+          <Typography>Market Cap: { marketCap }</Typography>
         </Grid>
       </GridBlock>
     </GridPaper>

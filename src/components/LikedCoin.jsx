@@ -1,41 +1,49 @@
 import React from 'react'
-import { Typography, Accordion, AccordionSummary, AccordionDetails, IconButton, Avatar } from '@mui/material'
+import { Card, Typography, Accordion, AccordionSummary, AccordionDetails, IconButton, Avatar } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { DeleteOutlined } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import parse from 'html-react-parser'
 
-function LikedCoin({ coin, handleDelete }) {
+function LikedCoin({ coin, onDelete }) {
 
   const navigate = useNavigate()
-  const { coinId, description, id, image, name } = coin
+
+  const { image, name, param, id, description } = coin
 
   return (
-    <ChosenCoin elevation={5} >
-      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Avatar 
-          src={ image } 
-          alt={ name } 
-          onClick={() => navigate(`/coins/${ coinId }`)}
-        />
-        <CoinName variant='h6' >
-          { name }
-        </CoinName>
-        <IconButton onClick={() => handleDelete( id )} >
-          <DeleteOutlined />  
-        </IconButton>        
-      </AccordionSummary>
-      <AccordionDetails >
-        <Description>
-          { parse( description ) }
-        </Description>
-      </AccordionDetails>
-    </ChosenCoin>
+    <RowCard>
+      <ChosenCoin elevation={2} >
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          <Avatar 
+            src={ image } 
+            alt={ name } 
+            onClick={() => navigate(`/coins/${ param }`)}
+          />
+          <CoinName variant='h6' >
+            { name }
+          </CoinName>
+        </AccordionSummary>
+        <AccordionDetails >
+          <Description>
+            { parse(description) }
+          </Description>
+        </AccordionDetails>
+      </ChosenCoin>
+      <IconButton onClick={() => onDelete(id)} >
+        <DeleteOutlined />  
+      </IconButton>  
+    </RowCard>      
   )
 }
 
 export default LikedCoin
+
+const RowCard = styled(Card)({
+  display: 'flex', 
+  flexDirection: 'row',
+})
 
 const ChosenCoin = styled(Accordion)({
   margin: '8px',

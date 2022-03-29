@@ -12,15 +12,15 @@ function CoinList({ coinList, isLoaded }) {
 
   const dataGridJsx = 
     <DataGrid
-      rows={coinList}
-      columns={gridColumns}
+      rows={ coinList }
+      columns={ gridColumns }
       hideFooter
-      onRowClick={(params) => navigate(`/coins/${params.id}`)} 
+      onRowClick={ (params) => navigate(`/coins/${params.id}`) } 
     />
 
   return (
     <ListContainer>
-      {isLoaded ? dataGridJsx : <h2>Loading...</h2>}
+      { isLoaded ? dataGridJsx : <h2>Loading...</h2> }
     </ListContainer>
   )
 }

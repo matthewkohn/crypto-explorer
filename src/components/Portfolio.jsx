@@ -6,12 +6,12 @@ import LikedCoin from './LikedCoin'
 import { getDatabaseUrl } from '../util/urls'
 
 function Portfolio({ likedCoins, updateCoins }) {
-
+  const databaseUrl = getDatabaseUrl()
   const navigate = useNavigate()
 
   const handleDelete = (id) => {
-    const databaseUrl = getDatabaseUrl()
-    fetch(databaseUrl + `/${id}`, {
+    const deleteUrl = databaseUrl + '/' + id
+    fetch(deleteUrl, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -23,7 +23,11 @@ function Portfolio({ likedCoins, updateCoins }) {
   }
 
   const likedCoinList = likedCoins.map((coin) => (
-    <LikedCoin key={coin.id} coin={coin} handleDelete={handleDelete} /> 
+    <LikedCoin 
+      key={coin.id} 
+      coin={coin} 
+      onDelete={handleDelete} 
+    /> 
   ))
 
   return (
@@ -37,7 +41,7 @@ function Portfolio({ likedCoins, updateCoins }) {
         size='large' 
         onClick={() => navigate('/coins')}
         >
-          Browse most popular cryptos
+          Browse the top cryptocurrencies
       </CallToAction>
     </PortfolioBox>
   )
