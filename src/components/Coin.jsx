@@ -64,7 +64,7 @@ function Coin({ coinList, addCoin, likedCoins }) {
         { isLiked ? 
           `${ name } is awesome. Keep learning.` 
           : 
-          `Learn more about ${ name }` 
+          `Add ${ name } to your reading list` 
         }
         <StarOutline />
       </CallToAction>

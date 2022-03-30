@@ -5,9 +5,9 @@ import Portfolio from './Portfolio'
 import CoinList from './CoinList'
 import Coin from './Coin'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { formatCoin } from '../util/formatCoinData'
 import { Container, Button, Card } from '@mui/material'
 import { styled } from '@mui/material/styles'
+import { formatCoin } from '../util/formatCoinData'
 import { getDatabaseUrl, getMarketsUrl } from '../util/urls'
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
       .catch(console.log)
   }, [])
 
-  const addCoin = (newCoin) => {
+  function addCoin(newCoin) {
     const updatedCoins = [...likedCoins, newCoin]
     setLikedCoins(updatedCoins)
   }

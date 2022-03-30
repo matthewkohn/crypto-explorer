@@ -54,7 +54,7 @@ const Instructions = styled(Typography)({
 })
 
 const PortfolioBox = styled(Box)({
-  height: '100vh',
+  height: '80vh',
 })
 
 const CallToAction = styled(Button)({
