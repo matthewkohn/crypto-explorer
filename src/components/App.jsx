@@ -8,7 +8,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { Container, Button, Card } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { formatCoin } from '../util/formatCoinData'
-import { getDatabaseUrl, getMarketsUrl } from '../util/urls'
+import { databaseUrl, marketsUrl } from '../util/urls'
 
 function App() {
   const [coinList, setCoinList] = useState([])
@@ -18,7 +18,6 @@ function App() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const marketsUrl = getMarketsUrl()
     fetch(marketsUrl)
       .then((res) => res.json())
       .then((coins) => {
@@ -28,7 +27,6 @@ function App() {
       })
       .catch(console.log)
     
-    const databaseUrl = getDatabaseUrl()
     fetch(databaseUrl)
       .then((res) => res.json())
       .then((savedCoins) => setLikedCoins(savedCoins))

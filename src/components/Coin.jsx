@@ -3,7 +3,7 @@ import { Paper, Grid, Typography, Button } from '@mui/material'
 import { StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getCoinGeckoUrl, getDatabaseUrl } from '../util/urls';
+import { coinGeckoUrl, databaseUrl } from '../util/urls';
 
 function Coin({ coinList, addCoin, likedCoins }) {
   const [description, setDescription] = useState('')
@@ -16,7 +16,6 @@ function Coin({ coinList, addCoin, likedCoins }) {
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
 
   useEffect(() => {
-    const coinGeckoUrl = getCoinGeckoUrl()
     const descriptionUrl = coinGeckoUrl + '/' + id
     fetch(descriptionUrl)
       .then((res) => res.json())
@@ -29,7 +28,6 @@ function Coin({ coinList, addCoin, likedCoins }) {
 
   function handleAddCoin() {
     const jsonObj = { name, image, param: id, description }
-    const databaseUrl = getDatabaseUrl()
     fetch(databaseUrl, {
       method: 'POST',
       headers: {

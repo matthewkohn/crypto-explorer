@@ -3,10 +3,9 @@ import { Box, Button, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import LikedCoin from './LikedCoin'
-import { getDatabaseUrl } from '../util/urls'
+import { databaseUrl } from '../util/urls'
 
 function Portfolio({ likedCoins, updateCoins }) {
-  const databaseUrl = getDatabaseUrl()
   const navigate = useNavigate()
 
   const handleDelete = (id) => {
