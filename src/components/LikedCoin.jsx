@@ -11,6 +11,7 @@ function LikedCoin({ coin, onDelete }) {
   const navigate = useNavigate()
 
   const { image, name, param, id, description } = coin
+  const parsedDescription = parse(description)
 
   return (
     <RowCard>
@@ -27,7 +28,7 @@ function LikedCoin({ coin, onDelete }) {
         </AccordionSummary>
         <AccordionDetails >
           <Description>
-            { parse(description) }
+            { parsedDescription }
           </Description>
         </AccordionDetails>
       </ChosenCoin>
@@ -47,6 +48,7 @@ const RowCard = styled(Card)({
 
 const ChosenCoin = styled(Accordion)({
   margin: '8px',
+  width: '100%',
 })
 
 const CoinName = styled(Typography)({
