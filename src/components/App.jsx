@@ -1,7 +1,7 @@
 import '../index.css'
 import React, { useEffect, useState } from 'react'
 import Header from './Header'
-import Portfolio from './Portfolio'
+import ReadingList from './ReadingList'
 import CoinList from './CoinList'
 import Coin from './Coin'
 import { Routes, Route, useNavigate } from 'react-router-dom'
@@ -12,8 +12,8 @@ import { databaseUrl, marketsUrl } from '../util/urls'
 
 function App() {
   const [coinList, setCoinList] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false)
   const [likedCoins, setLikedCoins] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
   
   const navigate = useNavigate()
 
@@ -45,7 +45,7 @@ function App() {
           <Route
             path='/'
             element={
-              <Portfolio 
+              <ReadingList 
                 likedCoins={ likedCoins } 
                 updateCoins={ setLikedCoins } 
               />

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import LikedCoin from './LikedCoin'
 import { databaseUrl } from '../util/urls'
 
-function Portfolio({ likedCoins, updateCoins }) {
+function ReadingList({ likedCoins, updateCoins }) {
   const navigate = useNavigate()
 
   const handleDelete = (id) => {
@@ -30,10 +30,10 @@ function Portfolio({ likedCoins, updateCoins }) {
   ))
 
   return (
-    <PortfolioBox>
-      <Instructions variant='h5' gutterBottom >
-        Select a cryptocurrency to learn more
-      </Instructions>
+    <FavoritesBox>
+      <Title variant='h5' gutterBottom >
+        Reading List
+      </Title>
       {likedCoinList}
       <CallToAction 
         variant='outlined' 
@@ -42,17 +42,17 @@ function Portfolio({ likedCoins, updateCoins }) {
         >
           Browse the top cryptocurrencies
       </CallToAction>
-    </PortfolioBox>
+    </FavoritesBox>
   )
 }
 
-export default Portfolio
+export default ReadingList
 
-const Instructions = styled(Typography)({
+const Title = styled(Typography)({
   textAlign: 'center',
 })
 
-const PortfolioBox = styled(Box)({
+const FavoritesBox = styled(Box)({
   height: '80vh',
 })
 
