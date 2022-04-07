@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, Typography, Accordion, AccordionSummary, AccordionDetails, IconButton, Avatar } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { DeleteOutlined } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import parse from 'html-react-parser'
+import { coinGeckoUrl } from '../util/urls';
 
 function LikedCoin({ coin, onDelete }) {
-
-  const navigate = useNavigate()
-
-  const { image, name, param, id, description } = coin
+  const [description, setDescription] = useState('')
+  const { image, name, param, id } = coin
   const parsedDescription = parse(description)
+  
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    const descriptionUrl = coinGeckoUrl + '/' + param
+    fetch(descriptionUrl)
+      .then((res) => res.json())
+      .then((data) => setDescription(data.description.en))
+      .catch(console.log)
+  }, [param])
+
 
   return (
     <RowCard>

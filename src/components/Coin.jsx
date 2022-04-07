@@ -4,33 +4,26 @@ import { StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useParams } from 'react-router-dom'
 import { CoinContext } from '../context/coinContext'
-import { coinGeckoUrl, databaseUrl } from '../util/urls';
+import { databaseUrl } from '../util/urls';
 
 function Coin({ addCoin, likedCoins }) {
-  const [description, setDescription] = useState('')
   const [isLiked, setIsLiked] = useState(false)
-  
   const [coinList] = useContext(CoinContext)
+
   const param = useParams()
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
 
   const navigate = useNavigate()
 
-
   useEffect(() => {
-    const descriptionUrl = coinGeckoUrl + '/' + id
-    fetch(descriptionUrl)
-      .then((res) => res.json())
-      .then((data) => setDescription(data.description.en))
-      .catch(console.log)
-    // Check for duplication when CTA is clicked
-    const found = likedCoins.some(coin => coin.param === id)
+    const found = likedCoins.find(coin => coin.param === id)
     setIsLiked(found)
   }, [id, likedCoins])
 
   function handleAddCoin() {
-    const jsonObj = { name, image, param: id, description }
+    const jsonObj = { name, image, param: id }
+    
     fetch(databaseUrl, {
       method: 'POST',
       headers: {

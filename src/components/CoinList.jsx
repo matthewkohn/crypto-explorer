@@ -17,7 +17,7 @@ function CoinList() {
       rows={ coinList }
       columns={ gridColumns }
       hideFooter
-      onRowClick={ (params) => navigate(`/coins/${params.id}`) } 
+      onRowClick={ (coin) => navigate(`/coins/${coin.id}`) } 
     />
 
   return (
