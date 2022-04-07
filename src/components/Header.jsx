@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, IconButton, Toolbar, Typography } from '@mui/material'
-import { FormatListNumbered, StarOutline } from '@mui/icons-material'
+import { FormatListNumbered, MailOutline, StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
@@ -27,6 +27,12 @@ function Header() {
           onClick={() => navigate('/coins')}
         >
           <FormatListNumbered />
+        </IconButton>
+        <IconButton
+          size='large'
+          onClick={() => navigate('/contact')}
+        >
+          <MailOutline />
         </IconButton>
       </Toolbar>
     </HeaderBox>

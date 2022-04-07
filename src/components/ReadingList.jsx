@@ -21,10 +21,10 @@ function ReadingList({ likedCoins, updateCoins }) {
       .catch(console.log)
   }
 
-  const likedCoinList = likedCoins.map((coin) => (
+  const likedCoinList = likedCoins.map((coinObj) => (
     <LikedCoin 
-      key={coin.id} 
-      coin={coin} 
+      key={coinObj.id} 
+      coin={coinObj} 
       onDelete={handleDelete} 
     /> 
   ))

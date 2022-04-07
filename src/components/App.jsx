@@ -4,6 +4,7 @@ import Header from './Header'
 import ReadingList from './ReadingList'
 import CoinList from './CoinList'
 import Coin from './Coin'
+import ContactUs from './ContactUs'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { Container, Button, Card } from '@mui/material'
 import { styled } from '@mui/material/styles'
@@ -43,6 +44,11 @@ function App() {
             element={
               <CoinList />
             } />
+          <Route
+            path='/contact'
+            element={
+              <ContactUs />
+          } />
           <Route
             path='/coins/:id'
             element={

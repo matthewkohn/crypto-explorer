@@ -23,7 +23,6 @@ function Coin({ addCoin, likedCoins }) {
 
   function handleAddCoin() {
     const jsonObj = { name, image, param: id }
-    
     fetch(databaseUrl, {
       method: 'POST',
       headers: {

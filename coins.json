@@ -1,9 +1,21 @@
 {
   "coins": [
     {
-      "name": "Tether",
-      "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
-      "param": "tether",
+      "name": "Bitcoin",
+      "image": "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+      "param": "bitcoin",
+      "id": 1
+    },
+    {
+      "name": "Ethereum",
+      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
+      "param": "ethereum",
+      "id": 2
+    },
+    {
+      "name": "Cardano",
+      "image": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
+      "param": "cardano",
       "id": 3
     }
   ]

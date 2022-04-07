@@ -9,8 +9,8 @@ import { coinGeckoUrl } from '../util/urls';
 
 function LikedCoin({ coin, onDelete }) {
   const [description, setDescription] = useState('')
-  const { image, name, param, id } = coin
   const parsedDescription = parse(description)
+  const { image, name, param, id } = coin
   
   const navigate = useNavigate()
   
@@ -21,7 +21,6 @@ function LikedCoin({ coin, onDelete }) {
       .then((data) => setDescription(data.description.en))
       .catch(console.log)
   }, [param])
-
 
   return (
     <RowCard>
