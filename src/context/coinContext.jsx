@@ -16,8 +16,8 @@ function CoinProvider({ children }) {
       .then((coins) => {
         const formattedCoins = coins.map((coin) => formatCoin(coin))
         setCoinList(formattedCoins)
+        setIsLoaded(true)
       })
-      .then(setIsLoaded(true))
       .catch(console.log)
     }, [])
 

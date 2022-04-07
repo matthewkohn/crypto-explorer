@@ -5,15 +5,13 @@ import ReadingList from './ReadingList'
 import CoinList from './CoinList'
 import Coin from './Coin'
 import ContactUs from './ContactUs'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import { Container, Button, Card } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import ErrorCard from './ErrorCard'
+import { Routes, Route } from 'react-router-dom'
+import { Container } from '@mui/material'
 import { databaseUrl } from '../util/urls'
 
 function App() {
   const [likedCoins, setLikedCoins] = useState([])
-  
-  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(databaseUrl)
@@ -30,57 +28,36 @@ function App() {
   return (
       <Container>
         <Header />
+        
         <Routes>
           <Route
             path='/'
-            element={
-              <ReadingList 
-                likedCoins={ likedCoins } 
-                updateCoins={ setLikedCoins } 
-              />
-            } />
+            element={ 
+              <ReadingList likedCoins={ likedCoins } updateCoins={ setLikedCoins } />
+            } 
+          />
           <Route
             path='/coins'
-            element={
-              <CoinList />
-            } />
+            element={ <CoinList /> } 
+          />
           <Route
             path='/contact'
-            element={
-              <ContactUs />
-          } />
+            element={ <ContactUs /> } 
+          />
           <Route
             path='/coins/:id'
             element={
-              <Coin 
-                addCoin={ addCoin } 
-                likedCoins={ likedCoins } 
-              />
-            } />
+              <Coin addCoin={ addCoin } likedCoins={ likedCoins } />
+            } 
+          />
           <Route
             path='*'
-            element={
-              <ErrorCard>
-                <Button 
-                  color='error'
-                  onClick={() => navigate('/coins')}
-                  variant='outlined' 
-                  >
-                    404 Not Found. Try going back?
-                </Button>
-              </ErrorCard>
-            } />
+            element={ <ErrorCard /> } 
+          />
         </Routes>
+
       </Container>
   )
 }
 
 export default App
-
-const ErrorCard = styled(Card)({
-  display: 'flex', 
-  flexDirection: 'column', 
-  justifyContent: 'center',
-  margin: '60px 0', 
-  padding: '30px', 
-})
