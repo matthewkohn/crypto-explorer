@@ -1,10 +1,10 @@
 {
   "coins": [
     {
-      "name": "Solana",
-      "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
-      "param": "solana",
-      "id": 1
+      "name": "USD Coin",
+      "image": "https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png?1547042389",
+      "param": "usd-coin",
+      "id": 3
     }
   ]
 }

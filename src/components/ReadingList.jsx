@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import LikedCoin from './LikedCoin'
+import { LikedCoinContext } from '../context/likedCoinContext'
 import { databaseUrl } from '../util/urls'
 
-function ReadingList({ likedCoins, updateCoins }) {
+function ReadingList() {
   const navigate = useNavigate()
+  const [likedCoins, setLikedCoins] = useContext(LikedCoinContext)
 
   const handleDelete = (id) => {
     const deleteUrl = databaseUrl + '/' + id
@@ -16,7 +18,7 @@ function ReadingList({ likedCoins, updateCoins }) {
       .then((res) => res.json())
       .then(() => {
         const filteredCoins = likedCoins.filter((coin) => coin.id !== id)
-        updateCoins(filteredCoins)
+        setLikedCoins(filteredCoins)
       })
       .catch(console.log)
   }

@@ -4,23 +4,24 @@ import { StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useParams } from 'react-router-dom'
 import { CoinContext } from '../context/coinContext'
+import { LikedCoinContext } from '../context/likedCoinContext'
 import { databaseUrl } from '../util/urls';
 
-function Coin({ addCoin, likedCoins }) {
+function Coin() {
   const [isLiked, setIsLiked] = useState(false)
+  const navigate = useNavigate()
   const param = useParams()
   const [coinList] = useContext(CoinContext)
+  const [likedCoins, setLikedCoins] = useContext(LikedCoinContext)
 
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
-
-  const navigate = useNavigate()
-
+  
   useEffect(() => {
     const found = likedCoins.find(coin => coin.param === id)
     setIsLiked(found)
   }, [id, likedCoins])
-
+  
   function handleAddCoin() {
     const jsonObj = { name, image, param: id }
     fetch(databaseUrl, {
@@ -31,7 +32,10 @@ function Coin({ addCoin, likedCoins }) {
       body: JSON.stringify(jsonObj)
     })
       .then((res) => res.json())
-      .then((data) => addCoin(data))
+      .then((newCoin) => {
+        const updatedCoins = [...likedCoins, newCoin]
+        setLikedCoins(updatedCoins)
+      })
       .then(navigate('/'))
       .catch(console.log)
   }
@@ -51,10 +55,13 @@ function Coin({ addCoin, likedCoins }) {
       <CallToAction 
         variant='outlined' 
         size='large' 
-        onClick={ isLiked ? () => navigate('/') : handleAddCoin }
+        onClick={ 
+          isLiked ? () => navigate('/') : handleAddCoin 
+        }
       >
         <StarOutline />
-        { isLiked ? 
+        { 
+          isLiked ? 
           `${ name } is awesome. Keep learning.` 
           : 
           `Add ${ name } to your reading list` 

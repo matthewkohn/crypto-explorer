@@ -53,20 +53,20 @@ export const ContactUs = () => {
       component="form" 
       noValidate 
       autoComplete="off" 
-      ref={form} 
-      onSubmit={sendEmail}
+      ref={ form } 
+      onSubmit={ sendEmail }
     >
       <Typography variant="h6">Share your thoughts with us!</Typography>
       <TextField 
         label="Name"
-        value={formData.user_name} 
-        onChange={handleInput} 
+        value={ formData.user_name } 
+        onChange={ handleInput } 
         name="user_name"
       />
       <TextField 
         label="Email"
-        value={formData.user_email} 
-        onChange={handleInput} 
+        value={ formData.user_email } 
+        onChange={ handleInput } 
         type="email" 
         name="user_email" 
       />
@@ -74,14 +74,14 @@ export const ContactUs = () => {
         label="Message"
         multiline
         maxRows={4}
-        value={formData.message} 
-        onChange={handleInput} 
+        value={ formData.message } 
+        onChange={ handleInput } 
         name="message" 
       />
       <Button variant="contained" type="submit" value="Send" >
         SEND
       </Button>
-      <Button variant="outlined" onClick={clearForm}>
+      <Button variant="outlined" onClick={ clearForm }>
         CLEAR
       </Button>
     </ContactForm>
