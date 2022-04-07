@@ -8,9 +8,9 @@ import { databaseUrl } from '../util/urls';
 
 function Coin({ addCoin, likedCoins }) {
   const [isLiked, setIsLiked] = useState(false)
+  const param = useParams()
   const [coinList] = useContext(CoinContext)
 
-  const param = useParams()
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
 

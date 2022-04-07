@@ -7,16 +7,10 @@
       "id": 1
     },
     {
-      "name": "Ethereum",
-      "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
-      "param": "ethereum",
+      "name": "XRP",
+      "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
+      "param": "ripple",
       "id": 2
-    },
-    {
-      "name": "Cardano",
-      "image": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
-      "param": "cardano",
-      "id": 3
     }
   ]
 }

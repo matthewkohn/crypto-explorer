@@ -11,10 +11,15 @@ export const ContactUs = () => {
     message: ""
   })
   const form = useRef()
+
   const navigate = useNavigate()
 
   function sendEmail(e) {
     e.preventDefault()
+    if (formData.user_name === "" || formData.user_email === "" || formData.message === "") {
+      alert("Complete all fields to continue")
+      return
+    }
     // .sendForm(serviceID, templateID, templateParams, userID)
     emailjs.sendForm('service_yg5oyfg', 'template_nuhniqb', form.current, 'C5EneggP_VxuDkKFa')
       .then((result) => {
