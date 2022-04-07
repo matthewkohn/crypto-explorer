@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { DataGrid } from '@mui/x-data-grid'
 import { Box } from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
+import { CoinContext } from '../context/coinContext'
 import { columns } from '../util/columns'
 
-function CoinList({ coinList, isLoaded }) {
+function CoinList() {
   const gridColumns = columns()
+  const [coinList, isLoaded] = useContext(CoinContext)
 
   let navigate = useNavigate()
 

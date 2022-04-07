@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Paper, Grid, Typography, Button } from '@mui/material'
 import { StarOutline } from '@mui/icons-material'
 import { styled } from '@mui/material/styles'
 import { useNavigate, useParams } from 'react-router-dom'
+import { CoinContext } from '../context/coinContext'
 import { coinGeckoUrl, databaseUrl } from '../util/urls';
 
-function Coin({ coinList, addCoin, likedCoins }) {
+function Coin({ addCoin, likedCoins }) {
   const [description, setDescription] = useState('')
   const [isLiked, setIsLiked] = useState(false)
-
+  
+  const [coinList] = useContext(CoinContext)
   const param = useParams()
-  const navigate = useNavigate()
-
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
+
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const descriptionUrl = coinGeckoUrl + '/' + id

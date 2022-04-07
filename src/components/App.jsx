@@ -7,26 +7,14 @@ import Coin from './Coin'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { Container, Button, Card } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { formatCoin } from '../util/formatCoinData'
-import { databaseUrl, marketsUrl } from '../util/urls'
+import { databaseUrl } from '../util/urls'
 
 function App() {
-  const [coinList, setCoinList] = useState([])
   const [likedCoins, setLikedCoins] = useState([])
-  const [isLoaded, setIsLoaded] = useState(false)
   
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch(marketsUrl)
-      .then((res) => res.json())
-      .then((coins) => {
-        const formattedCoins = coins.map((coin) => formatCoin(coin))
-        setCoinList(formattedCoins)
-        setIsLoaded(true)
-      })
-      .catch(console.log)
-    
     fetch(databaseUrl)
       .then((res) => res.json())
       .then((savedCoins) => setLikedCoins(savedCoins))
@@ -53,17 +41,13 @@ function App() {
           <Route
             path='/coins'
             element={
-              <CoinList 
-                coinList={ coinList } 
-                isLoaded={ isLoaded } 
-              />
+              <CoinList />
             } />
           <Route
             path='/coins/:id'
             element={
               <Coin 
                 addCoin={ addCoin } 
-                coinList={ coinList } 
                 likedCoins={ likedCoins } 
               />
             } />
