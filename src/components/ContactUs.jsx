@@ -4,21 +4,23 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom';
 
-export const ContactUs = () => {
+function ContactUs() {
   const [formData, setFormData] = useState({
     user_name: "",
     user_email: "",
     message: ""
-  })
-  const form = useRef()
+  });
+  const form = useRef();
+  console.log(form)
+  console.log(form.current)
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function sendEmail(e) {
-    e.preventDefault()
+    e.preventDefault();
     if (formData.user_name === "" || formData.user_email === "" || formData.message === "") {
-      alert("Complete all fields to continue")
-      return
+      alert("Complete all fields to continue");
+      return;
     }
     // .sendForm(serviceID, templateID, templateParams, userID)
     emailjs.sendForm('service_yg5oyfg', 'template_nuhniqb', form.current, 'C5EneggP_VxuDkKFa')
@@ -27,17 +29,17 @@ export const ContactUs = () => {
       }, (error) => {
         console.log('FAILED...', error.text);
       });
-    alert("Message received.")
-    navigate('/')
+    alert("Message received.");
+    navigate('/');
   }
 
   function handleInput(e) {
-    const name = e.target.name
-    let value = e.target.value
+    const name = e.target.name;
+    let value = e.target.value;
     setFormData({
       ...formData,
       [name]: value,
-    })
+    });
   }
 
   function clearForm() {
@@ -45,48 +47,47 @@ export const ContactUs = () => {
       user_name: "",
       user_email: "",
       message: ""
-    })
+    });
   }
 
   return (
-    <ContactForm 
-      component="form" 
-      noValidate 
-      autoComplete="off" 
-      ref={ form } 
-      onSubmit={ sendEmail }
+    <ContactForm
+      component="form"
+      noValidate
+      autoComplete="off"
+      ref={form}
+      onSubmit={sendEmail}
     >
       <Typography variant="h6">Share your thoughts with us!</Typography>
-      <TextField 
+      <TextField
         label="Name"
-        value={ formData.user_name } 
-        onChange={ handleInput } 
-        name="user_name"
-      />
-      <TextField 
+        value={formData.user_name}
+        onChange={handleInput}
+        name="user_name" />
+      <TextField
         label="Email"
-        value={ formData.user_email } 
-        onChange={ handleInput } 
-        type="email" 
-        name="user_email" 
-      />
+        value={formData.user_email}
+        onChange={handleInput}
+        type="email"
+        name="user_email" />
       <TextField
         label="Message"
         multiline
         maxRows={4}
-        value={ formData.message } 
-        onChange={ handleInput } 
-        name="message" 
-      />
-      <Button variant="contained" type="submit" value="Send" >
+        value={formData.message}
+        onChange={handleInput}
+        name="message" />
+        <Typography>From: "{formData.user_name}" @ "{formData.user_email}"</Typography>
+        <Typography>Your Message: "{formData.message}"</Typography>
+      <Button variant="contained" type="submit" value="Send">
         SEND
       </Button>
-      <Button variant="outlined" onClick={ clearForm }>
+      <Button variant="outlined" onClick={clearForm}>
         CLEAR
       </Button>
     </ContactForm>
   );
-};
+}
 
 export default ContactUs
 
