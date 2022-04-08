@@ -11,12 +11,12 @@ function Coin() {
   const [isLiked, setIsLiked] = useState(false)
   const navigate = useNavigate()
   const param = useParams()
+  
   const [coinList] = useContext(CoinContext)
-  const [likedCoins, setLikedCoins] = useContext(LikedCoinContext)
-
   const currentCoin = coinList.filter((item) => item.id === param.id)[0]
   const { id, rank, image, symbol, name, price, percentChange, high24h, low24h, marketCap } = currentCoin; 
   
+  const [likedCoins, setLikedCoins] = useContext(LikedCoinContext)
   useEffect(() => {
     const found = likedCoins.find(coin => coin.param === id)
     setIsLiked(found)

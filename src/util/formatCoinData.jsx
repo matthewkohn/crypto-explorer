@@ -1,6 +1,7 @@
 function formatCoin(coin) {
   return {
     id: coin.id,
+    coinId: coin.id,
     rank: coin.market_cap_rank,
     image: coin.image,
     symbol: coin.symbol.toUpperCase(),
