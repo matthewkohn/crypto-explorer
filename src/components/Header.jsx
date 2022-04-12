@@ -10,10 +10,7 @@ function Header() {
   return (
     <HeaderBox>
       <Toolbar>
-        <Title 
-          variant='h3' 
-          component='div'  
-        >
+        <Title variant='h3' component='div' >
           Crypto Explorer
         </Title>
         <IconButton

@@ -9,10 +9,9 @@ import { coinGeckoUrl } from '../util/urls';
 
 function LikedCoin({ coin, onDelete }) {
   const [description, setDescription] = useState('')
-  const { image, name, param, id } = coin
   const parsedDescription = parse(description)
-  
   const navigate = useNavigate()
+  const { image, name, param, id } = coin
   
   useEffect(() => {
     const descriptionUrl = coinGeckoUrl + '/' + param

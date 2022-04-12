@@ -7,10 +7,9 @@ import { CoinContext } from '../context/coinContext'
 import { columns } from '../util/columns'
 
 function CoinList() {
-  const gridColumns = columns()
   const [coinList, isLoaded] = useContext(CoinContext)
-
   let navigate = useNavigate()
+  const gridColumns = columns()
 
   const dataGridJsx = 
     <DataGrid

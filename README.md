@@ -84,7 +84,7 @@ DELETE: `<ReadingList>` component to update a deleted `<LikedCoin>`
 
 
 ## Visuals<a id="visual"></a>
-A video walkthrough for this app can be found [here](https://youtu.be/8sb3mBpuc5M).
+A video walkthrough for this app can be found [here](https://youtu.be/bICaRa5aJFk).
 
 #### Component Hierarchy Flowchart:
 ![Component hierarchy flowchart](/media/hierarchy.drawio.svg)

@@ -7,8 +7,8 @@ import { LikedCoinContext } from '../context/likedCoinContext'
 import { databaseUrl } from '../util/urls'
 
 function ReadingList() {
-  const navigate = useNavigate()
   const [likedCoins, setLikedCoins] = useContext(LikedCoinContext)
+  const navigate = useNavigate()
 
   const handleDelete = (id) => {
     const deleteUrl = databaseUrl + '/' + id

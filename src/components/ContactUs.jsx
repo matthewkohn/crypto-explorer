@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-import { Box, Button, TextField, Typography } from '@mui/material';
+import React, { useRef, useState } from 'react'
+import emailjs from '@emailjs/browser'
+import { Box, Button, TextField, Typography } from '@mui/material'
 import { styled } from '@mui/material/styles'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -11,31 +11,28 @@ function ContactUs() {
     message: ""
   });
   const form = useRef();
-  console.log(form)
-  console.log(form.current)
-
   const navigate = useNavigate();
 
   function sendEmail(e) {
     e.preventDefault();
     if (formData.user_name === "" || formData.user_email === "" || formData.message === "") {
-      alert("Complete all fields to continue");
-      return;
+      alert("Complete all fields to continue")
+      return
     }
     // .sendForm(serviceID, templateID, templateParams, userID)
     emailjs.sendForm('service_yg5oyfg', 'template_nuhniqb', form.current, 'C5EneggP_VxuDkKFa')
       .then((result) => {
-        console.log('SUCCESS!', result.status, result.text);
+        console.log('SUCCESS!', result.status, result.text)
       }, (error) => {
-        console.log('FAILED...', error.text);
+        console.log('FAILED...', error.text)
       });
-    alert("Message received.");
-    navigate('/');
+    alert("Message received.")
+    navigate('/')
   }
 
   function handleInput(e) {
-    const name = e.target.name;
-    let value = e.target.value;
+    const name = e.target.name
+    let value = e.target.value
     setFormData({
       ...formData,
       [name]: value,
@@ -77,8 +74,8 @@ function ContactUs() {
         value={formData.message}
         onChange={handleInput}
         name="message" />
-        <Typography>From: "{formData.user_name}" @ "{formData.user_email}"</Typography>
-        <Typography>Your Message: "{formData.message}"</Typography>
+        {/* <Typography>From: "{formData.user_name}" at "{formData.user_email}"</Typography>
+        <Typography>Your Message: "{formData.message}"</Typography> */}
       <Button variant="contained" type="submit" value="Send">
         SEND
       </Button>
