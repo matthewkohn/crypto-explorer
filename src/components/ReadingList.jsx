@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import LikedCoin from './LikedCoin'
 import { LikedCoinContext } from '../context/likedCoinContext'
 import { databaseUrl } from '../util/urls'
+// import Clickme from './Clickme'
 
 function ReadingList() {
   const [likedCoins, setLikedCoins] = useContext(LikedCoinContext)
@@ -37,6 +38,8 @@ function ReadingList() {
         Reading List
       </Title>
       {likedCoinList}
+
+      {/* <Clickme /> */}
       <CallToAction 
         variant='outlined' 
         size='large' 
